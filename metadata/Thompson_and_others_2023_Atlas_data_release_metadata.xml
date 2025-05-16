@@ -1,0 +1,1783 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Robert S. Thompson</origin>
+        <origin>Katherine H. Anderson</origin>
+        <origin>Richard T. Pelltier</origin>
+        <origin>Laura E. Strickland</origin>
+        <origin>Sarah L. Shafer</origin>
+        <origin>Patrick J. Bartlein</origin>
+        <pubdate>20230621</pubdate>
+        <title>A gridded database of the modern distributions of climate, woody plant taxa, and ecoregions for the continental United States and Canada</title>
+        <edition>Version 1.0</edition>
+        <geoform>spreadsheet/CSV/netCDF</geoform>
+        <pubinfo>
+          <pubplace>Denver, CO USA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P9FPD80E</onlink>
+        <lworkcit>
+          <citeinfo>
+            <origin>Robert S. Thompson (Volumes D, E, F, G)</origin>
+            <origin>Katherine H. Anderson (Volumes D, E, F, G)</origin>
+            <origin>Richard T. Pelltier (Volumes D, E, F, G)</origin>
+            <origin>Laura E. Strickland (Volumes D, F, G)</origin>
+            <origin>Sarah L. Shafer (Volumes D, E, F, G)</origin>
+            <origin>Patrick J. Bartlein (Volumes D, E, F, G)</origin>
+            <origin>Andrew K. McFadden (Volume G)</origin>
+            <pubdate>2015</pubdate>
+            <title>Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America - Alaska species and ecoregions (U.S. Geological Survey Professional Paper 1650-D, 2006); Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America - Ecoregions of North America (U.S. Geological Survey Professional Paper 1650-E, 2007); Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America - Modern data for climatic estimation from vegetation inventories (U.S. Geological Survey Professional Paper 1650-F, 2012); Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America - Revisions for all taxa from the United States and Canada and new taxa from the western United States (U.S. Geological Survey Professional Paper 1650-G, 2015)</title>
+            <geoform>document</geoform>
+            <serinfo>
+              <sername>U.S. Geological Survey Professional Paper</sername>
+              <issue>1650-D; 1650-E; 1650-F; 1650-G</issue>
+            </serinfo>
+            <onlink>https://doi.org/10.3133/pp1650D</onlink>
+            <onlink>https://doi.org/10.3133/pp1650E</onlink>
+            <onlink>https://doi.org/10.3133/pp1650F</onlink>
+            <onlink>https://doi.org/10.3133/pp1650G</onlink>
+          </citeinfo>
+        </lworkcit>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>On the continental scale, climate is an important determinant of the distributions of plant taxa and ecoregions. To quantify and depict the relations between specific climate variables and these distributions, we placed modern climate and plant taxa distribution data on an approximately 25-kilometer (km) equal-area grid with 27,984 points that cover Canada and the continental United States (Thompson and others, 2015). The gridded climatic data include annual and monthly temperature and precipitation, as well as bioclimatic variables (growing degree days, mean temperatures of the coldest and warmest months, and a moisture index) based on 1961-1990 30-year mean values from the University of East Anglia (UK) Climatic Research Unit (CRU) CL 2.0 dataset (New and others, 2002), and absolute minimum and maximum temperatures for 1951-1980 interpolated from climate-station data (WeatherDisc Associates, 1989). As described below, these data were used to produce portions of the "Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America" (hereafter referred to as "the Atlas"; Thompson and others, 1999a, 1999b, 2000, 2006, 2007, 2012a, 2015).
+
+Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G:
+The Atlas evolved through time as technology improved and our knowledge expanded. The climate data employed in the first five Atlas volumes were replaced by more standard and better documented data in the last two volumes (Volumes F and G; Thompson and others, 2012a, 2015). Similarly, the plant distribution data used in Volumes A through D (Thompson and others, 1999a, 1999b, 2000, 2006) were improved for the latter volumes. However, the digitized ecoregion boundaries used in Volume E (Thompson and others, 2007) remain unchanged. Also, as we and others used the data in Atlas Volumes A through E, we came to realize that the plant distribution and climate data for areas south of the US-Mexico border were not of sufficient quality or resolution for our needs and these data are not included in this data release.
+
+The data in this data release are provided in comma-separated values (.csv) files. We also provide netCDF (.nc) files containing the climate and bioclimatic data, grouped taxa and species presence-absence data, and ecoregion assignment data for each grid point (but not the country, state, province, and county assignment data for each grid point, which are available in the .csv files). The netCDF files contain updated Albers conical equal-area projection details and more precise grid-point locations. When the original approximately 25-km equal-area grid was created (ca. 1990), it was designed to be registered with existing data sets, and only 3 decimal places were recorded for the grid-point latitude and longitude values (these original 3-decimal place latitude and longitude values are in the .csv files). In addition, the Albers conical equal-area projection used for the grid was modified to match projection irregularities of the U.S. Forest Service atlases (e.g., Little, 1971, 1976, 1977) from which plant taxa distribution data were digitized.
+
+For the netCDF files, we have updated the Albers conical equal-area projection parameters and recalculated the grid-point latitudes and longitudes to 6 decimal places. The additional precision in the location data produces maximum differences between the 6-decimal place and the original 3-decimal place values of up to 0.00266 degrees longitude (approximately 143.8 m along the projection x-axis of the grid) and up to 0.00123 degrees latitude (approximately 84.2 m along the projection y-axis of the grid). The maximum straight-line distance between a three-decimal-point and six-decimal-point grid-point location is 144.2 m. Note that we have not regridded the elevation, climate, grouped taxa and species presence-absence data, or ecoregion data to the locations defined by the new 6-decimal place latitude and longitude data. For example, the climate data described in the Atlas publications were interpolated to the grid-point locations defined by the original 3-decimal place latitude and longitude values. Interpolating the data to the 6-decimal place latitude and longitude values would in many cases not result in changes to the reported values and for other grid points the changes would be small and insignificant. Similarly, if the digitized Little (1971, 1976, 1977) taxa distribution maps were regridded using the 6-decimal place latitude and longitude values, the changes to the gridded distributions would be minor, with a small number of grid points along the edge of a taxa's digitized distribution potentially changing value from taxa "present" to taxa "absent" (or vice versa). These changes should be considered within the spatial margin of error for the taxa distributions, which are based on hand-drawn maps with the distributions evidently generalized, or represented by a small, filled circle, and these distributions were subsequently hand digitized. Users wanting to use data that exactly match the data in the Atlas volumes should use the 3-decimal place latitude and longitude data provided in the .csv files in this data release to represent the center point of each grid cell. Users for whom an offset of up to 144.2 m from the original grid-point location is acceptable (e.g., users investigating continental-scale questions) or who want to easily visualize the data may want to use the data associated with the 6-decimal place latitude and longitude values in the netCDF files.
+
+The variable names in the netCDF files generally match those in the data release .csv files, except where the .csv file variable name contains a forward slash, colon, period, or comma (i.e., "/", ":", ".", or ","). In the netCDF file variable short names, the forward slashes are replaced with an underscore symbol (i.e., "_") and the colons, periods, and commas are deleted. In the netCDF file variable long names, the punctuation in the name matches that in the .csv file variable names. The "country", "state, province, or territory", and "county" data in the .csv files are not included in the netCDF files.
+
+Data included in this release:
+- Geographic scope. The gridded data cover an area that we labelled as "CANUSA", which includes Canada and the USA (excluding Hawaii, Puerto Rico, and other oceanic islands). Note that the maps displayed in the Atlas volumes are cropped at their northern edge and do not display the full northern extent of the data included in this data release.
+- Elevation. The elevation data were regridded from the ETOPO5 data set (National Geophysical Data Center, 1993). There were 35 coastal grid points in our CANUSA study area grid for which the regridded elevations were below sea level and these grid points were assigned missing elevation values (i.e., elevation = 9999). The grid points with missing elevation values occur in five coastal areas: (1) near San Diego (California, USA; 1 grid point), (2) Vancouver Island (British Columbia, Canada) and the Olympic Peninsula (Washington, USA; 2 grid points), (3) the Haida Gwaii (formerly Queen Charlotte Islands, British Columbia, Canada) and southeast Alaska (USA, 9 grid points), (4) the Canadian Arctic Archipelago (22 grid points), and (5) Newfoundland (Canada; 1 grid point).
+- Climate. The gridded climatic data provided here are based on the 1961-1990 30-year mean values from the University of East Anglia (UK) Climatic Research Unit (CRU) CL 2.0 dataset (New and others, 2002), and include annual and monthly temperature and precipitation. The CRU CL 2.0 data were interpolated onto the approximately 25-km grid using geographically-weighted regression, incorporating local lapse-rate estimation and correction. Additional bioclimatic variables (growing degree days on a 5 degrees Celsius base, mean temperatures of the coldest and warmest months, and a moisture index calculated as actual evapotranspiration divided by potential evapotranspiration) were calculated using the interpolated CRU CL 2.0 data. Also included are absolute minimum and maximum temperatures for 1951-1980 interpolated in a similar fashion from climate-station data (WeatherDisc Associates, 1989). These climate and bioclimate data were used in Atlas volumes F and G (see Thompson and others, 2015, for a description of the methods used to create the gridded climate data). Note that for grid points with missing elevation values (i.e., elevation values equal to 9999), climate data were created using an elevation value of -120 meters. Users may want to exclude these climate data from their analyses (see the Usage Notes section in the data release readme file).
+- Plant distributions. The gridded plant distribution data align with Atlas volume G (Thompson and others, 2015). Plant distribution data on the grid include 690 species, as well as 67 groups of related species and genera, and are based on U.S. Forest Service atlases (e.g., Little, 1971, 1976, 1977), regional atlases (e.g., Benson and Darrow, 1981), and new maps based on information available from herbaria and other online and published sources (for a list of sources, see Tables 3 and 4 in Thompson and others, 2015). See the "Notes" column in Table 1 (https://pubs.usgs.gov/pp/p1650-g/table1.html) and Table 2 (https://pubs.usgs.gov/pp/p1650-g/table2.html) in Thompson and others (2015) for important details regarding the species and grouped taxa distributions.
+- Ecoregions. The ecoregion gridded data are the same as in Atlas volumes D and E (Thompson and others, 2006, 2007), and include three different systems, Bailey's ecoregions (Bailey, 1997, 1998), WWF's ecoregions (Ricketts and others, 1999), and Kuchler's potential natural vegetation regions (Kuchler, 1985), that are each based on distinctive approaches to categorizing ecoregions. For the Bailey and WWF ecoregions for North America and the Kuchler potential natural vegetation regions for the contiguous United States (i.e., the lower 48 states), data are provided for the Level I, Level II, and Level III ecoregion classification of each grid point. Level I ecoregions are the broadest ecoregion categories and generally cover relatively large areas (e.g., western forests). Level II ecoregions are subregions of the Level I ecoregions and are more specifically defined (e.g., needleleaf forests). Level III ecoregions are subregions of the Level II ecoregions (e.g., Great Basin pine forest [Pinus]) and generally cover relatively small areas. For the Kuchler potential natural vegetation regions in Alaska, Kuchler (1985) did not include Level I and Level II regions in his classification and so only Level III Kuchler regions for Alaska are included in this data release. Ecoregion and potential natural vegetation region names in this data release generally follow those used in Thompson and others (2006, 2007).
+- Estimation of climate from vegetation inventories. As described in Atlas volume F (Thompson and others, 2012a) and Thompson and others (2012b), vegetation inventories (plant taxa present in a vegetation assemblage at a given site) can be used to estimate climatic parameters based on the identification of the range of a given parameter where all taxa in an assemblage overlap (i.e., the "mutual climatic range"; MCR). For the reconstruction of past climates from fossil or subfossil plant assemblages, we include matrices of 32 climatic and bioclimatic parameters versus occurrences or nonoccurrences for the same 690 species and 67 groups of related species and genera. See the Methods section of volume F for more details (https://pubs.usgs.gov/pp/p1650-f/Methods.html; https://pubs.usgs.gov/pp/p1650-f/DataTables.html).</abstract>
+      <purpose>The gridded data provided here are used for quantifying and depicting the relations between climate variables and distributions of woody plant taxa and ecoregions in North America. This information supports studies in: ecology and forestry; the reconstruction of past climate from plant macrofossil assemblages; and, the estimation of potential distributions of plants and regions under climate change scenarios.
+This specific set of tables relates to:
+- Climate and bioclimate
+- Distributions of plant taxa (species and groups)
+- Ecoregions
+- Mutual Climatic Range (MCR) tables</purpose>
+      <supplinf>Datasets included in this data release:
+- comma delimited files (.csv)
+- netCDF files (.nc)</supplinf>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <rngdates>
+          <begdate>1951</begdate>
+          <enddate>2015</enddate>
+        </rngdates>
+      </timeinfo>
+      <current>ground condition</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <spdom>
+      <bounding>
+        <westbc>-167.623</westbc>
+        <eastbc>-52.757</eastbc>
+        <northbc>82.975</northbc>
+        <southbc>25.181</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>Bioclimate</themekey>
+        <themekey>Biogeography</themekey>
+        <themekey>Climate</themekey>
+        <themekey>Ecoregions</themekey>
+        <themekey>Gridded data</themekey>
+        <themekey>Mutual Climatic Range (MCR)</themekey>
+        <themekey>Paleoclimatic reconstructions</themekey>
+        <themekey>Phytogeography</themekey>
+        <themekey>Plant distributions</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:620da87bd34e6c7e83ba9ba7</themekey>
+      </theme>
+      <place>
+        <placekt>None</placekt>
+        <placekey>Canada</placekey>
+        <placekey>North America</placekey>
+        <placekey>United States of America</placekey>
+      </place>
+    </keywords>
+    <accconst>None</accconst>
+    <useconst>Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Robert S. Thompson</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntpos>Emeritus Research Geologist</cntpos>
+        <cntaddr>
+          <addrtype>Mailing</addrtype>
+          <address>Box 25046, MS 980</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>303-236-5347</cntvoice>
+        <cntemail>rthompson@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>This work was funded by the U.S. Geological Survey Climate Research and Development Program. Anderson's contributions to this project were supported by Cooperative Agreement Number G14AC00234 from the U.S. Geological Survey.
+
+REFERENCES:
+
+Bailey, R.G., 1997. Map: Ecoregions of North America (rev.), scale 1:15,000,000. U.S. Department of Agriculture Forest Service, Washington D.C.
+
+Bailey, R.G., 1998. Ecoregions map of North America: Explanatory note. Miscellaneous Publication 1548. U.S. Department of Agriculture Forest Service, Washington, D.C.
+
+Benson, L., and Darrow, R.A., 1981. Trees and shrubs of the southwestern deserts (3rd ed.). University of Arizona Press, 416 p.
+
+Kuchler, A.W., 1985. Potential natural vegetation. National Atlas of the United States of America. U.S. Geological Survey. https://doi.org/10.3133/32574
+
+Little, E.L., Jr., 1971. Atlas of United States trees, volume 1, Conifers and important hardwoods. U.S. Department of Agriculture Forest Service, Miscellaneous Publication 1146. Washington D.C., 200 maps. https://doi.org/10.5962/bhl.title.130546
+
+Little, E.L., Jr., 1976. Atlas of United States trees, volume 3, Minor western hardwoods. U.S. Department of Agriculture Forest Service, Miscellaneous Publication 1314, Washington D.C., 210 maps. https://doi.org/10.5962/bhl.title.65782
+
+Little, E.L., Jr., 1977. Atlas of United States trees, volume 4, Minor eastern hardwoods. U.S. Department of Agriculture Forest Service, Miscellaneous Publication 1342, Washington D.C., 166 maps. https://doi.org/10.5962/bhl.title.65458
+
+National Geophysical Data Center, 1993. National Geophysical Data Center, 5-minute gridded global relief data (ETOPO5), National Geophysical Data Center, NOAA. https://doi.org/10.7289/V5D798BF
+
+New, M., Lister, D., Hulme, M., and Makin, I., 2002. A high-resolution data set of surface climate over global land areas. Climate Research 21, 1-25. https://doi.org/10.3354/cr021001
+
+Ricketts, T.H., Dinerstein, E., Olson, D.M., Loucks, C.J., Eichbaum, W.M., DellaSala, D.A., Kavanagh, K.C., Hedao, P., Hurley, P.T., Carney, K.M., Abell, R.A., and Walters, S., 1999. Terrestrial ecoregions of North America: a conservation assessment. Island Press, Washington, D.C., 485 p.
+
+Thompson, R.S., Anderson, K.H., and Bartlein, P.J., 1999a. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Introduction and conifers. U.S. Geological Survey Professional Paper 1650-A, 269 p. https://doi.org/10.3133/pp1650AB (Online version: https://pubs.usgs.gov/pp/p1650-a/)
+
+Thompson, R.S., Anderson, K.H., and Bartlein, P.J., 1999b. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Hardwoods. U.S. Geological Survey Professional Paper 1650-B, 423 p. https://doi.org/10.3133/pp1650AB (Online version: https://pubs.usgs.gov/pp/p1650-b/)
+
+Thompson, R.S., Anderson, K.H., Bartlein, P.J., and Smith, S.A., 2000. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Additional conifers, hardwoods, and monocots. U.S. Geological Survey Professional Paper 1650-C, 386 p. https://doi.org/10.3133/pp1650C
+
+Thompson, R.S., Anderson, K.H., Strickland, L.E., Shafer, S.L., Pelltier, R.T., and Bartlein, P.J., 2006. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Alaska species and ecoregions. U.S. Geological Survey Professional Paper 1650-D. https://doi.org/10.3133/pp1650D (Online version: https://pubs.usgs.gov/pp/p1650-d/)
+
+Thompson, R.S., Anderson, K.H., Pelltier, R.T., Shafer, S.L., and Bartlein, P.J., 2007. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Ecoregions of North America. U.S. Geological Survey Professional Paper 1650-E. https://doi.org/10.3133/pp1650E (Online version: https://pubs.usgs.gov/pp/p1650-e/)
+
+Thompson, R.S., Anderson, K.H., Pelltier, R.T., Strickland, L.E., Shafer, S.L., and Bartlein, P.J., 2012a. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Modern data for climatic estimation from vegetation inventories. U.S. Geological Survey Professional Paper 1650-F, CD-ROM. https://doi.org/10.3133/pp1650F (Online version: https://pubs.usgs.gov/pp/p1650-f/)
+
+Thompson, R.S., Anderson, K.H., Pelltier, R.T., Strickland, L.E., Bartlein, P.J., and Shafer, S.L., 2012b. Quantitative estimation of climatic parameters from vegetation data in North America by the mutual climatic range technique. Quaternary Science Reviews, v. 51, p. 18–39. https://doi.org/10.1016/j.quascirev.2012.07.003
+
+Thompson, R.S., Anderson, K.H., Pelltier, R.T., Strickland, L.E., Shafer, S.L., Bartlein, P.J., and McFadden, A.K., 2015. Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Revisions for all taxa from the United States and Canada and new taxa from the western United States. U.S. Geological Survey Professional Paper 1650-G. https://doi.org/10.3133/pp1650G (Online version: https://pubs.usgs.gov/pp/p1650-g/)
+
+WeatherDisc Associates, 1989. World WeatherDisc, version 1.0. Seattle, Washington, WeatherDisc Associates, CD-ROM.</datacred>
+    <native>spreadsheet in .CSV format</native>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>The primary method used to check attribute accuracy was to plot the data and then carefully review the information shown on the check plot.</attraccr>
+    </attracc>
+    <logic>This data set has no topology.</logic>
+    <complete>Data set is considered complete for the information presented.</complete>
+    <posacc>
+      <horizpa>
+        <horizpar>Accuracy of these digital data in part is based upon the use of source graphics. Inaccuracies may exist due to boundary information obtained from various sources and scales. Horizontal positional accuracy for the digital data was tested by visual comparison to the source.</horizpar>
+      </horizpa>
+      <vertacc>
+        <vertaccr>No formal positional accuracy tests were conducted.</vertaccr>
+      </vertacc>
+    </posacc>
+    <lineage>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>U.S. Geological Survey</origin>
+            <pubdate>2015</pubdate>
+            <title>Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Revisions for all taxa from the United States and Canada and new taxa from the western United States</title>
+            <geoform>document</geoform>
+            <serinfo>
+              <sername>U.S. Geological Survey Professional Paper</sername>
+              <issue>1650-G</issue>
+            </serinfo>
+            <onlink>https://doi.org/10.3133/pp1650G</onlink>
+          </citeinfo>
+        </srccite>
+        <typesrc>online</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+              <begdate>1951</begdate>
+              <enddate>2015</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>Thompson and others, 2015</srccitea>
+        <srccontr>Thompson and others (2015) contributed the data and methodologies for the species and grouped taxa presence/absence, climatic and bioclimatic parameters, and World Wildlife Fund ecoregion designations on the 25-km grid.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>U.S. Geological Survey</origin>
+            <pubdate>2012</pubdate>
+            <title>Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Modern data for climatic estimation from vegetation inventories</title>
+            <geoform>document</geoform>
+            <serinfo>
+              <sername>U.S. Geological Survey Professional Paper</sername>
+              <issue>1650-F</issue>
+            </serinfo>
+            <onlink>https://doi.org/10.3133/pp1650F</onlink>
+          </citeinfo>
+        </srccite>
+        <typesrc>CD-ROM</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+              <begdate>1961</begdate>
+              <enddate>2012</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>Thompson and others, 2012a</srccitea>
+        <srccontr>Thompson and others (2012a) contributed the methodologies for the weighted mutual climatic range (MCR) tables.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>U.S. Geological Survey</origin>
+            <pubdate>2007</pubdate>
+            <title>Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Ecoregions of North America</title>
+            <geoform>document</geoform>
+            <serinfo>
+              <sername>U.S. Geological Survey Professional Paper</sername>
+              <issue>1650-E</issue>
+            </serinfo>
+            <onlink>https://doi.org/10.3133/pp1650E</onlink>
+          </citeinfo>
+        </srccite>
+        <typesrc>Printed document</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+              <begdate>1951</begdate>
+              <enddate>2007</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>Thompson and others, 2007</srccitea>
+        <srccontr>Thompson and others (2007) contributed the data and methodologies for the Bailey ecoregion and Kuchler potential natural vegetation (for the contiguous U.S.) designations on the 25-km grid.</srccontr>
+      </srcinfo>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>U.S. Geological Survey</origin>
+            <pubdate>2006</pubdate>
+            <title>Atlas of relations between climatic parameters and distributions of important trees and shrubs in North America -- Alaska species and ecoregions</title>
+            <geoform>document</geoform>
+            <serinfo>
+              <sername>U.S. Geological Survey Professional Paper</sername>
+              <issue>1650-D</issue>
+            </serinfo>
+            <onlink>https://doi.org/10.3133/pp1650D</onlink>
+          </citeinfo>
+        </srccite>
+        <typesrc>Printed document</typesrc>
+        <srctime>
+          <timeinfo>
+            <rngdates>
+              <begdate>1951</begdate>
+              <enddate>2006</enddate>
+            </rngdates>
+          </timeinfo>
+          <srccurr>ground condition</srccurr>
+        </srctime>
+        <srccitea>Thompson and others, 2006</srccitea>
+        <srccontr>Thompson and others (2006) contributed the data and methodologies for the Alaska Kuchler potential natural vegetation designations on the 25-km grid.</srccontr>
+      </srcinfo>
+      <procstep>
+        <procdesc>The data in this data release were created following the methods described in Thompson and others (2006, https://doi.org/10.3133/pp1650D), Thompson and others (2007, https://doi.org/10.3133/pp1650E), Thompson and others (2012a, https://doi.org/10.3133/pp1650F), and Thompson and others (2015, https://doi.org/10.3133/pp1650G).</procdesc>
+        <procdate>2015</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Point</direct>
+    <ptvctinf>
+      <sdtsterm>
+        <sdtstype>Point</sdtstype>
+        <ptvctcnt>27984</ptvctcnt>
+      </sdtsterm>
+    </ptvctinf>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <planar>
+        <mapproj>
+          <mapprojn>Albers Conical Equal Area</mapprojn>
+          <albers>
+            <stdparll>33.333</stdparll>
+            <stdparll>66.667</stdparll>
+            <longcm>-100.0</longcm>
+            <latprjo>45.0</latprjo>
+            <feast>0.0</feast>
+            <fnorth>0.0</fnorth>
+          </albers>
+        </mapproj>
+        <planci>
+          <plance>Row and column</plance>
+          <coordrep>
+            <absres>25.868</absres>
+            <ordres>25.868</ordres>
+          </coordrep>
+          <plandu>Kilometers</plandu>
+        </planci>
+      </planar>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <overview>
+      <eaover>This data release includes the following files and data:
+
+- This metadata file (Thompson_and_others_2023_Atlas_data_release_metadata.xml and Thompson_and_others_2023_Atlas_data_release_metadata.txt)
+- A readme file (Thompson_and_others_2023_Atlas_data_release_readme.txt)
+- A data dictionary file (Thompson_and_others_2023_Atlas_data_release_data_dictionary.csv)
+- The following data files:
+
+FILENAME: Ecoregions_and_Potential_Natural_Vegetation_on_25km_Grid.csv
+This file contains ecoregion and potential natural vegetation distributions described in Thompson and others (2006, 2007).
+
+This file contains 27984 points.
+
+COLUMN HEADINGS AND DESCRIPTIONS OF FIELD NAMES:
+
+ID = unique grid-point identifier
+LATITUDE = latitude of grid point in decimal degrees
+LONGITUDE = longitude of grid point in decimal degrees
+ROW = row identifier (y-coordinate)
+COL = column identifier (x-coordinate)
+ELEVATION = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+COUNTRY = country designation of grid point
+STATE_PROVINCE_or_TERRITORY = state (United States), province, or territory (Canada) designation of grid point
+COUNTY = county designation of grid point in the United States
+BAILEY_IDENTIFIER = numeric identifier of Bailey ecoregion classification
+BAILEY_DOMAIN_(LEVEL_I) = level I ecoregion classification from Bailey (1997, 1998)
+BAILEY_DIVISION_(LEVEL_II) = level II ecoregion classification from Bailey (1997, 1998)
+BAILEY_PROVINCE_(LEVEL_III) = level III ecoregion classification from Bailey (1997, 1998)
+KUCHLER_IDENTIFIER = numeric identifier of Kuchler potential natural vegetation classification. -9999 values indicate that the grid point is located in Canada or is classified as Glaciers or Water.
+KUCHLER_POTENTIAL_NATURAL_VEGETATION_LEVEL_I = level I potential natural vegetation classification from Kuchler (1985). Note that there are no Level I categories for Alaska (see discussion in Thompson and others, 2006).
+KUCHLER_POTENTIAL_NATURAL_VEGETATION_LEVEL_II = level II potential natural vegetation classification from Kuchler (1985). Note that there are no Level II categories for Alaska (see discussion in Thompson and others, 2006).
+KUCHLER_POTENTIAL_NATURAL_VEGETATION_LEVEL_III = level III potential natural vegetation classification from Kuchler (1985)
+WWF_IDENTIFIER = numeric identifier of WWF ecoregion classification. -9999 values indicate that the grid point is classified as Lake or Rock and ice.
+WWF_LEVEL_I = level I ecoregion classification from Ricketts and others (1999)
+WWF_MAJOR_HABITAT_TYPES_(LEVEL_II) = level II ecoregion classification from Ricketts and others (1999)
+WWF_ECOREGION_(LEVEL_III) = level III ecoregion classification from Ricketts and others (1999)
+
+--------------------
+
+FILENAME: Modern_Climate_and_Bioclimate_on_25km_Grid.csv
+This file contains the climate and bioclimate data described in Thompson and others (2012a, 2015).
+
+COLUMN HEADINGS AND DESCRIPTIONS OF FIELD NAMES:
+
+ID = unique grid-point identifier
+LATITUDE = latitude of grid point in decimal degrees
+LONGITUDE = longitude of grid point in decimal degrees
+ROW = row identifier (y-coordinate)
+COL = column identifier (x-coordinate)
+ELEVATION = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+COUNTRY = country designation of grid point
+STATE_PROVINCE_or_TERRITORY = state (United States), province, or territory (Canada) designation of grid point
+COUNTY = county designation of grid point in the United States
+JANT = mean January temperature (degrees C)
+FEBT = mean February temperature (degrees C)
+MART = mean March temperature (degrees C)
+APRT = mean April temperature (degrees C)
+MAYT = mean May temperature (degrees C)
+JUNT = mean June temperature (degrees C)
+JULT = mean July temperature (degrees C)
+AUGT = mean August temperature (degrees C)
+SEPT = mean September temperature (degrees C)
+OCTT = mean October temperature (degrees C)
+NOVT = mean November temperature (degrees C)
+DECT = mean December temperature (degrees C)
+ANNT = mean annual temperature (degrees C)
+TMAX = absolute maximum temperature (degrees C)
+TMIN = absolute minimum temperature (degrees C)
+MTCO = mean temperature of the coldest month (degrees C)
+MTWA = mean temperature of the warmest month (degrees C)
+JANP = mean January total precipitation (mm)
+FEBP = mean February total precipitation (mm)
+MARP = mean March total precipitation (mm)
+APRP = mean April total precipitation (mm)
+MAYP = mean May total precipitation (mm)
+JUNP = mean June total precipitation (mm)
+JULP = mean July total precipitation (mm)
+AUGP = mean August total precipitation (mm)
+SEPP = mean September total precipitation (mm)
+OCTP = mean October total precipitation (mm)
+NOVP = mean November total precipitation (mm)
+DECP = mean December total precipitation (mm)
+ANNP = mean annual total precipitation (mm)
+GDD5 = growing degree days (on a 5 degrees C base)
+AE/PE = moisture index, calculated as actual evapotranspiration (mm) divided by potential evapotranspiration (mm)
+
+--------------------
+
+FILENAME: Presence_Absence_of_Grouped_Taxa_on_25km_Grid.csv
+This file contains the grouped taxa distributions described in Thompson and others (2015).
+
+ERRATUM
+The distribution of California torreya (Torreya californica) in this data release and in Thompson and others (2015) contains an erroneous grid point in Nova Scotia (Canada). This error also affects the data for taxa groups Cupressaceae/Taxaceae and Cupressaceae/Taxaceae West, which include Torreya californica.
+
+COLUMN HEADINGS AND DESCRIPTIONS OF FIELD NAMES:
+
+ID = unique grid-point identifier
+LATITUDE = latitude of grid point in decimal degrees
+LONGITUDE = longitude of grid point in decimal degrees
+ROW = row identifier (y-coordinate)
+COL = column identifier (x-coordinate)
+ELEVATION = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+COUNTRY = country designation of grid point
+STATE_PROVINCE_or_TERRITORY = state (United States), province, or territory (Canada) designation of grid point
+COUNTY = county designation of grid point in the United States
+
+Subsequent columns provide presence-absence data for the grouped plant taxa in the data set. A "1" indicates that the group is present and a "0" indicates that it is absent.
+Taxa groups in the data set include:
+ABIES = group of related species consisting of Abies amabilis, Abies balsamea, Abies bracteata, Abies concolor, Abies fraseri, Abies grandis, Abies lasiocarpa, Abies magnifica, Abies procera
+ABIES EAST = group of related species consisting of Abies balsamea, Abies fraseri
+ABIES WEST = group of related species consisting of Abies amabilis, Abies bracteata, Abies concolor, Abies grandis, Abies lasiocarpa, Abies magnifica, Abies procera
+ACER = group of related species consisting of Acer barbatum, Acer circinatum, Acer glabrum, Acer grandidentatum, Acer leucoderme, Acer macrophyllum, Acer negundo, Acer nigrum, Acer pensylvanicum, Acer rubrum, Acer saccharinum, Acer saccharum, Acer spicatum
+ACER EAST = group of related species consisting of Acer barbatum, Acer leucoderme, Acer nigrum, Acer pensylvanicum, Acer rubrum, Acer saccharinum, Acer saccharum, Acer spicatum
+ACER WEST = group of related species consisting of Acer circinatum, Acer glabrum, Acer grandidentatum, Acer macrophyllum
+AESCULUS = group of related species consisting of Aesculus californica, Aesculus glabra, Aesculus octandra, Aesculus parviflora, Aesculus pavia, Aesculus sylvatica
+ALNUS = group of related species consisting of Alnus maritima, Alnus oblongifolia, Alnus rhombifolia, Alnus rubra, Alnus rugosa, Alnus serrulata, Alnus sinuata, Alnus tenuifolia
+ALNUS EAST = group of related species consisting of Alnus maritima, Alnus rugosa, Alnus serrulata
+ALNUS WEST = group of related species consisting of Alnus oblongifolia, Alnus rhombifolia, Alnus rubra, Alnus sinuata, Alnus tenuifolia
+ARTEMISIA SUBGENUS TRIDENTATAE = group of related species consisting of Artemisia arbuscula, Artemisia bigelovii, Artemisia cana, Artemisia nova, Artemisia rigida, Artemisia tridentata, Artemisia tripartita
+BETULA = group of related species consisting of Betula alleghaniensis, Betula lenta, Betula nana, Betula nigra, Betula occidentalis, Betula papyrifera, Betula populifolia
+CARYA = group of related species consisting of Carya aquatica, Carya cordiformis, Carya floridana, Carya glabra, Carya illinoensis, Carya laciniosa, Carya myristicaeformis, Carya ovata, Carya pallida, Carya texana, Carya tomentosa
+CASTANEA = group of related species consisting of Castanea alnifolia, Castanea dentata, Castanea ozarkensis, Castanea pumila
+CUPRESSACEAE EAST = group of related species consisting of Chamaecyparis thyoides, Juniperus ashei, Juniperus silicicola, Juniperus virginiana, Taxodium distichum, Thuja occidentalis
+CUPRESSACEAE / TAXACEAE = group of related species consisting of Chamaecyparis lawsoniana, Chamaecyparis nootkatensis, Chamaecyparis thyoides, Cupressus arizonica, Cupressus bakeri, Cupressus macnabiana, Cupressus sargentii, Juniperus ashei, Juniperus californica, Juniperus communis, Juniperus deppeana, Juniperus erythrocarpa, Juniperus flaccida, Juniperus horizontalis, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii, Juniperus scopulorum, Juniperus silicicola, Juniperus virginiana, Libocedrus decurrens, Sequoia sempervirens, Sequoiadendron giganteum, Taxodium distichum, Taxus brevifolia, Taxus canadensis, Taxus floridana, Thuja occidentalis, Thuja plicata, Torreya californica, Torreya taxifolia
+CUPRESSACEAE / TAXACEAE EAST = group of related species consisting of Chamaecyparis thyoides, Juniperus ashei, Juniperus silicicola, Juniperus virginiana, Taxodium distichum, Taxus canadensis, Taxus floridana, Thuja occidentalis, Torreya taxifolia
+CUPRESSACEAE / TAXACEAE WEST = group of related species consisting of Chamaecyparis lawsoniana, Chamaecyparis nootkatensis, Cupressus arizonica, Cupressus bakeri, Cupressus macnabiana, Cupressus sargentii, Juniperus californica, Juniperus deppeana, Juniperus erythrocarpa, Juniperus flaccida, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii, Juniperus scopulorum, Libocedrus decurrens, Sequoia sempervirens, Sequoiadendron giganteum, Taxus brevifolia, Thuja plicata, Torreya californica
+CYLINDROPUNTIA ACANTHOCARPA / CYLINDROPUNTIA GANDERI = group of related species consisting of Cylindropuntia acanthocarpa, Cylindropuntia ganderi
+FRAXINUS= group of related species consisting of Fraxinus americana, Fraxinus anomala, Fraxinus berlandieriana, Fraxinus caroliniana, Fraxinus cuspidata, Fraxinus dipetala, Fraxinus greggii, Fraxinus latifolia, Fraxinus nigra, Fraxinus papillosa, Fraxinus pennsylvanica, Fraxinus profunda, Fraxinus quadrangulata, Fraxinus texensis, Fraxinus velutina
+FRAXINUS EAST = group of related species consisting of Fraxinus americana, Fraxinus caroliniana, Fraxinus nigra, Fraxinus pennsylvanica, Fraxinus profunda, Fraxinus quadrangulata
+FRAXINUS WEST = group of related species consisting of Fraxinus anomala, Fraxinus berlandieriana, Fraxinus cuspidata, Fraxinus dipetala, Fraxinus greggii, Fraxinus latifolia, Fraxinus papillosa, Fraxinus texensis, Fraxinus velutina
+HESPEROYUCCA = group of related species consisting of Hesperoyucca newberryi, Hesperoyucca whipplei
+JUGLANS = group of related species consisting of Juglans californica, Juglans cinerea, Juglans major, Juglans microcarpa, Juglans nigra
+JUGLANS EAST = group of related species consisting of Juglans cinerea, Juglans nigra
+JUGLANS WEST = group of related species consisting of Juglans californica, Juglans major, Juglans microcarpa
+JUNIPERUS = group of related species consisting of Juniperus ashei, Juniperus californica, Juniperus communis, Juniperus deppeana, Juniperus erythrocarpa, Juniperus flaccida, Juniperus horizontalis, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii, Juniperus scopulorum, Juniperus silicicola, Juniperus virginiana
+JUNIPERUS BOREAL = group of related species consisting of Juniperus communis, Juniperus horizontalis
+JUNIPERUS EAST = group of related species consisting of Juniperus ashei, Juniperus silicicola, Juniperus virginiana
+JUNIPERUS WEST = group of related species consisting of Juniperus californica, Juniperus deppeana, Juniperus erythrocarpa, Juniperus flaccida, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii, Juniperus scopulorum
+JUNIPERUS WEST WOODLAND with JUNIPERUS CALIFORNICA = group of related species consisting of Juniperus californica, Juniperus erythrocarpa, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii
+JUNIPERUS WEST WOODLAND without JUNIPERUS CALIFORNICA = group of related species consisting of Juniperus erythrocarpa, Juniperus monosperma, Juniperus occidentalis, Juniperus osteosperma, Juniperus pinchotii
+JUNIPERUS WEST WOODLAND (SOUTHWEST) = group of related species consisting of Juniperus erythrocarpa, Juniperus monosperma, Juniperus pinchotii
+LARIX = group of related species consisting of Larix laricina, Larix lyallii, Larix occidentalis
+LARIX / PSEUDOTSUGA = group of related species consisting of Larix laricina, Larix lyallii, Larix occidentalis, Pseudotsuga macrocarpa, Pseudotsuga menziesii
+MAGNOLIA = group of related species consisting of Magnolia acuminata, Magnolia ashei, Magnolia fraseri, Magnolia grandiflora, Magnolia macrophylla, Magnolia pyramidata, Magnolia tripetala, Magnolia virginiana
+MORTONIA = group of related species consisting of Mortonia scabrella, Mortonia sempervirens, Mortonia utahensis
+OSTRYA / CARPINUS = group of related species consisting of Carpinus caroliniana, Ostrya knowltonii, Ostrya virginiana
+PICEA = group of related species consisting of Picea breweriana, Picea engelmannii, Picea glauca, Picea mariana, Picea pungens, Picea rubens, Picea sitchensis
+PICEA NORTH / EAST = group of related species consisting of Picea glauca, Picea mariana, Picea rubens
+PICEA WEST = group of related species consisting of Picea breweriana, Picea engelmannii, Picea pungens, Picea sitchensis
+PICEA WEST INTERIOR = group of related species consisting of Picea engelmannii, Picea pungens
+PINUS = group of related species consisting of Pinus albicaulis, Pinus aristata, Pinus attenuata, Pinus balfouriana, Pinus banksiana, Pinus cembroides, Pinus clausa, Pinus contorta, Pinus coulteri, Pinus echinata, Pinus edulis, Pinus elliottii, Pinus engelmannii, Pinus flexilis, Pinus glabra, Pinus jeffreyi, Pinus lambertiana, Pinus leiophylla, Pinus longaeva, Pinus monophylla, Pinus monticola, Pinus muricata, Pinus palustris, Pinus ponderosa, Pinus pungens, Pinus quadrifolia, Pinus resinosa, Pinus rigida, Pinus sabiniana, Pinus serotina, Pinus strobiformis, Pinus strobus, Pinus taeda, Pinus virginiana, Pinus washoensis
+PINUS EAST = group of related species consisting of Pinus banksiana, Pinus clausa, Pinus echinata, Pinus elliottii, Pinus glabra, Pinus palustris, Pinus pungens, Pinus resinosa, Pinus rigida, Pinus serotina, Pinus strobus, Pinus taeda, Pinus virginiana
+PINUS NORTHEAST = group of related species consisting of Pinus banksiana, Pinus resinosa, Pinus rigida, Pinus strobus
+PINUS NORTHEAST YELLOW = group of related species consisting of Pinus banksiana, Pinus resinosa, Pinus rigida
+PINUS SOUTHEAST = group of related species consisting of Pinus clausa, Pinus echinata, Pinus elliottii, Pinus glabra, Pinus palustris, Pinus pungens, Pinus serotina, Pinus taeda, Pinus virginiana
+PINUS WEST = group of related species consisting of Pinus albicaulis, Pinus aristata, Pinus attenuata, Pinus balfouriana, Pinus cembroides, Pinus contorta, Pinus coulteri, Pinus edulis, Pinus engelmannii, Pinus flexilis, Pinus jeffreyi, Pinus lambertiana, Pinus leiophylla, Pinus longaeva, Pinus monophylla, Pinus monticola, Pinus ponderosa, Pinus quadrifolia, Pinus sabiniana, Pinus strobiformis, Pinus washoensis
+PINUS WEST PINYONS = group of related species consisting of Pinus cembroides, Pinus edulis, Pinus monophylla, Pinus quadrifolia
+PINUS WEST PINYONS (NORTHERN) = group of related species consisting of Pinus edulis, Pinus monophylla
+PINUS WEST WHITE (EXCLUDING PINYON PINES) = group of related species consisting of Pinus albicaulis, Pinus aristata, Pinus balfouriana, Pinus flexilis, Pinus lambertiana, Pinus longaeva, Pinus monticola, Pinus strobiformis
+PINUS WEST YELLOW = group of related species consisting of Pinus attenuata, Pinus contorta, Pinus coulteri, Pinus engelmannii, Pinus jeffreyi, Pinus leiophylla, Pinus ponderosa, Pinus sabiniana, Pinus washoensis
+PLATANUS = group of related species consisting of Platanus occidentalis, Platanus racemosa, Platanus wrightii
+POPULUS = group of related species consisting of Populus angustifolia, Populus balsamifera, Populus deltoides, Populus fremontii, Populus grandidentata, Populus heterophylla, Populus hinckleyana, Populus tremuloides, Populus trichocarpa
+PROSOPIS = group of related species consisting of Prosopis glandulosa, Prosopis pubescens, Prosopis velutina
+PROSOPIS GLANDULOSA / PROSOPIS VELUTINA = group of related species consisting of Prosopis glandulosa, Prosopis velutina
+PSEUDOTSUGA = group of related species consisting of Pseudotsuga macrocarpa, Pseudotsuga menziesii
+QUERCUS = group of related species consisting of Quercus agrifolia, Quercus alba, Quercus arizonica, Quercus arkansana, Quercus bicolor, Quercus chapmanii, Quercus chrysolepis, Quercus coccinea, Quercus cornelius-mulleri, Quercus douglasii, Quercus dunnii, Quercus durandii, Quercus ellipsoidalis, Quercus emoryi, Quercus engelmannii, Quercus falcata, Quercus gambelii, Quercus garryana, Quercus georgiana, Quercus glaucoides, Quercus gravesii, Quercus grisea, Quercus havardii, Quercus hinckleyi, Quercus hypoleucoides, Quercus ilicifolia, Quercus imbricaria, Quercus incana, Quercus john-tuckeri, Quercus kelloggii, Quercus laevis, Quercus laurifolia, Quercus lobata, Quercus lyrata, Quercus macdonaldii, Quercus macrocarpa, Quercus marilandica, Quercus michauxii, Quercus mohriana, Quercus muehlenbergii, Quercus myrtifolia, Quercus nigra, Quercus nuttallii, Quercus oblongifolia, Quercus oglethorpensis, Quercus palustris, Quercus phellos, Quercus prinus, Quercus pungens, Quercus rubra, Quercus rugosa, Quercus shumardii, Quercus stellata, Quercus tomentella, Quercus toumeyi, Quercus turbinella, Quercus undulata complex, Quercus velutina, Quercus virginiana, Quercus wislizeni
+QUERCUS EAST = group of related species consisting of Quercus alba, Quercus arkansana, Quercus bicolor, Quercus chapmanii, Quercus coccinea, Quercus durandii, Quercus ellipsoidalis, Quercus falcata, Quercus georgiana, Quercus glaucoides, Quercus gravesii, Quercus havardii, Quercus ilicifolia, Quercus imbricaria, Quercus incana, Quercus laevis, Quercus laurifolia, Quercus lyrata, Quercus macrocarpa, Quercus marilandica, Quercus michauxii, Quercus muehlenbergii, Quercus myrtifolia, Quercus nigra, Quercus nuttallii, Quercus oglethorpensis, Quercus palustris, Quercus phellos, Quercus prinus, Quercus rubra, Quercus shumardii, Quercus stellata, Quercus velutina, Quercus virginiana
+QUERCUS WEST = group of related species consisting of Quercus agrifolia, Quercus arizonica, Quercus chrysolepis, Quercus cornelius-mulleri, Quercus douglasii, Quercus dunnii, Quercus emoryi, Quercus engelmannii, Quercus gambelii, Quercus garryana, Quercus grisea, Quercus hinckleyi, Quercus hypoleucoides, Quercus john-tuckeri, Quercus kelloggii, Quercus lobata, Quercus macdonaldii, Quercus mohriana, Quercus oblongifolia, Quercus pungens, Quercus rugosa, Quercus tomentella, Quercus toumeyi, Quercus turbinella, Quercus undulata complex, Quercus wislizeni
+QUERCUS CORNELIUS-MULLERI / QUERCUS JOHN-TUCKERI / QUERCUS TURBINELLA = group of related species consisting of Quercus cornelius-mulleri, Quercus john-tuckeri, Quercus turbinella
+STEWARTIA = group of related species consisting of Stewartia malacodendron, Stewartia ovata
+TILIA = group of related species consisting of Tilia americana, Tilia caroliniana, Tilia heterophylla
+TSUGA = group of related species consisting of Tsuga canadensis, Tsuga caroliniana, Tsuga heterophylla, Tsuga mertensiana
+TSUGA EAST = group of related species consisting of Tsuga canadensis, Tsuga caroliniana
+TSUGA WEST = group of related species consisting of Tsuga heterophylla, Tsuga mertensiana
+ULMUS = group of related species consisting of Ulmus alata, Ulmus americana, Ulmus crassifolia, Ulmus rubra, Ulmus serotina, Ulmus thomasii
+
+--------------------
+
+FILENAME: Presence_Absence_of_Individual_Species_on_25km_Grid.csv
+This file contains the species distributions described in Thompson and others (2015).
+
+ERRATUM
+The distribution of California torreya (Torreya californica) in this data release and in Thompson and others (2015) contains an erroneous grid point in Nova Scotia (Canada). This error also affects the data for taxa groups Cupressaceae/Taxaceae and Cupressaceae/Taxaceae West, which include Torreya californica.
+
+COLUMN HEADINGS AND DESCRIPTIONS OF FIELD NAMES:
+
+ID = unique grid-point identifier
+LATITUDE = latitude of grid point in decimal degrees
+LONGITUDE = longitude of grid point in decimal degrees
+ROW = row identifier (y-coordinate)
+COL = column identifier (x-coordinate)
+ELEVATION = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+COUNTRY = country designation of grid point
+STATE_PROVINCE_or_TERRITORY = state (United States), province, or territory (Canada) designation of grid point
+COUNTY = county designation of grid point in the United States
+
+Subsequent columns provide presence-absence data for the plant taxa in the data set. A "1" indicates that the taxon is present in the assemblage and a "0" indicates that it is absent.
+Plant taxa in the data set include:
+Abies amabilis
+Abies balsamea
+Abies concolor
+Abies fraseri
+Abies grandis
+Abies lasiocarpa
+Abies magnifica
+Abies procera
+Acacia berlandieri
+Acacia constricta var. constricta
+Acacia farnesiana
+Acacia greggii
+Acacia rigidula
+Acacia roemeriana
+Acacia tortuosa
+Acacia wrightii
+Acer barbatum
+Acer circinatum
+Acer glabrum
+Acer grandidentatum
+Acer leucoderme
+Acer macrophyllum
+Acer negundo
+Acer nigrum
+Acer pensylvanicum
+Acer rubrum
+Acer saccharinum
+Acer saccharum
+Acer spicatum
+Aesculus californica
+Aesculus glabra
+Aesculus octandra
+Aesculus parviflora
+Aesculus pavia
+Aesculus sylvatica
+Agave deserti
+Agave lecheguilla
+Agave neomexicana
+Agave utahensis
+Allionia incarnata
+Alnus maritima
+Alnus oblongifolia
+Alnus rhombifolia
+Alnus rubra
+Alnus rugosa
+Alnus serrulata
+Alnus sinuata
+Alnus tenuifolia
+Ambrosia ambrosioides
+Ambrosia deltoidea
+Ambrosia dumosa
+Amelanchier alnifolia
+Amelanchier arborea
+Amelanchier interior
+Amelanchier sanguinea
+Amelanchier utahensis
+Amsonia tomentosa var. stenophylla
+Annona glabra
+Aralia spinosa
+Arbutus arizonica
+Arbutus menziesii
+Arbutus texana
+Arctostaphylos pringlei
+Ardisia escallonioides
+Artemisia arbuscula
+Artemisia bigelovii
+Artemisia cana
+Artemisia nova
+Artemisia rigida
+Artemisia tridentata
+Artemisia tripartita
+Asimina triloba
+Atriplex canescens
+Atriplex confertifolia
+Atriplex hymenelytra
+Atriplex parryi
+Atriplex polycarpa
+Avicennia germinans
+Baccharis halimifolia
+Bahiopsis reticulata
+Bebbia juncea
+Berberis fremontii
+Berberis haematocarpa
+Berberis trifoliolata
+Betula alleghaniensis
+Betula lenta
+Betula nana
+Betula nigra
+Betula occidentalis
+Betula papyrifera
+Betula populifolia
+Brickellia atractyloides
+Brickellia coulteri
+Brickellia incana
+Brickellia laciniata
+Brickellia venosa
+Buddleja utahensis
+Bumelia celastrina
+Bumelia lanuginosa
+Bumelia lycioides
+Bumelia tenax
+Bursera microphylla
+Bursera simaruba
+Caesalpinia mexicana
+Calliandra eriophylla
+Canotia holacantha
+Carnegiea gigantea
+Carpinus caroliniana
+Carya aquatica
+Carya cordiformis
+Carya floridana
+Carya glabra
+Carya illinoensis
+Carya laciniosa
+Carya myristicaeformis
+Carya ovata
+Carya pallida
+Carya texana
+Carya tomentosa
+Castanea alnifolia
+Castanea dentata
+Castanea ozarkensis
+Castanea pumila
+Castanopsis chrysophylla
+Ceanothus spinosus
+Ceanothus thyrsiflorus
+Celtis laevigata
+Celtis occidentalis
+Celtis pallida
+Celtis reticulata
+Celtis tenuifolia
+Cephalanthus occidentalis
+Cercidium floridum
+Cercidium macrum
+Cercidium microphyllum
+Cercis canadensis
+Cercis occidentalis
+Cercocarpus betuloides
+Cercocarpus breviflorus
+Cercocarpus intricatus
+Cercocarpus ledifolius
+Chamaebatiaria millefolium
+Chamaecyparis lawsoniana
+Chamaecyparis nootkatensis
+Chamaecyparis thyoides
+Chilopsis linearis
+Chionanthus virginicus
+Chrysobalanus icaco
+Chrysophyllum oliviforme
+Chrysothamnus albidus
+Chrysothamnus depressus
+Chrysothamnus gramineus
+Chrysothamnus greenei
+Chrysothamnus humilis
+Chrysothamnus linifolius
+Chrysothamnus molestus
+Chrysothamnus nauseosus
+Chrysothamnus paniculatus
+Chrysothamnus parryi
+Chrysothamnus pulchellus ssp. baileyi
+Chrysothamnus pulchellus ssp. pulchellus
+Chrysothamnus spathulatus
+Chrysothamnus teretifolius
+Chrysothamnus vaseyi
+Chrysothamnus viscidiflorus
+Citharexylum berlandieri
+Cladrastis kentukea
+Clethra acuminata
+Cliftonia monophylla
+Coccoloba diversifolia
+Coccoloba uvifera
+Coleogyne ramosissima
+Condalia ericoides
+Condalia globosa
+Condalia hookeri
+Condalia warnockii
+Conocarpus erectus
+Cordia boissieri
+Cornus alternifolia
+Cornus drummondii
+Cornus florida
+Cornus glabrata
+Cornus nuttallii
+Cornus occidentalis
+Cornus racemosa
+Cornus rugosa
+Cornus sessilis
+Cornus stolonifera
+Cornus stricta
+Corylus cornuta
+Cotinus obovatus
+Cowania mexicana
+Crataegus columbiana
+Crataegus douglasii
+Crataegus erythropoda
+Crataegus saligna
+Crataegus tracyi
+Crossosoma bigelovii
+Cupressus arizonica
+Cupressus macnabiana
+Cupressus sargentii
+Cylindropuntia acanthocarpa
+Cylindropuntia bigelovii
+Cylindropuntia echinocarpa
+Cylindropuntia fulgida
+Cylindropuntia ganderi
+Cylindropuntia imbricata
+Cylindropuntia whipplei
+Cyphomeris gypsophiloides
+Cyrilla racemiflora
+Dalea mollis
+Dalea spinosa
+Dasylirion leiophyllum
+Dasylirion wheeleri
+Diospyros texana
+Diospyros virginiana
+Ditaxis lanceolata
+Dithyrea californica
+Dodonaea viscosa
+Echinocactus polycephalus
+Ehretia anacua
+Elliottia racemosa
+Encelia farinosa
+Encelia frutescens
+Ephedra nevadensis var. aspera
+Ephedra nevadensis var. nevadensis
+Ephedra torreyana
+Ephedra trifurca
+Ephedra viridis
+Eriogonum fasciculatum
+Erythrina flabelliformis
+Erythrina herbacea
+Eucnide urens
+Eugenia axillaris
+Eugenia foetida
+Euonymus atropurpureus
+Euonymus occidentalis
+Eysenhardtia polystachya
+Eysenhardtia texana
+Fagus grandifolia
+Fallugia paradoxa
+Ferocactus covillei
+Ferocactus cylindraceus
+Ferocactus wislizeni
+Ficus aurea
+Flourensia cernua
+Forestiera acuminata
+Forestiera angustifolia
+Forestiera phillyreoides
+Forestiera segregata
+Fouquieria splendens
+Fraxinus americana
+Fraxinus anomala
+Fraxinus berlandieriana
+Fraxinus caroliniana
+Fraxinus cuspidata
+Fraxinus dipetala
+Fraxinus greggii
+Fraxinus latifolia
+Fraxinus nigra
+Fraxinus pennsylvanica
+Fraxinus profunda
+Fraxinus quadrangulata
+Fraxinus texensis
+Fraxinus velutina
+Fremontodendron californicum
+Garrya elliptica
+Gleditsia aquatica
+Gleditsia triacanthos
+Glossopetalon spinescens var. aridum
+Glossopetalon spinescens var. spinescens
+Gordonia lasianthus
+Guaiacum angustifolium
+Guapira discolor
+Gutierrezia microcephala
+Gymnocladus dioicus
+Halesia carolina
+Halesia diptera
+Halesia parviflora
+Hamamelis virginiana
+Hamelia patens
+Haplopappus cooperi
+Haplopappus cuneatus
+Haplopappus laricifolius
+Haplopappus tenuisectus
+Hazardia brickellioides
+Helietta parvifolia
+Hesperoyucca newberryi
+Hesperoyucca whipplei
+Holacantha emoryi
+Hymenoclea salsola
+Hyptis emoryi
+Ilex ambigua
+Ilex amelanchier
+Ilex cassine
+Ilex coriacea
+Ilex decidua
+Ilex laevigata
+Ilex montana
+Ilex myrtifolia
+Ilex opaca
+Ilex verticillata
+Ilex vomitoria
+Illicium floridanum
+Illicium parviflorum
+Janusia gracilis
+Jatropha cardiophylla
+Jatropha cuneata
+Juglans californica
+Juglans cinerea
+Juglans major
+Juglans microcarpa
+Juglans nigra
+Juniperus ashei
+Juniperus californica
+Juniperus communis
+Juniperus deppeana
+Juniperus erythrocarpa
+Juniperus horizontalis
+Juniperus monosperma
+Juniperus occidentalis
+Juniperus osteosperma
+Juniperus pinchotii
+Juniperus scopulorum
+Juniperus silicicola
+Juniperus virginiana
+Kalmia latifolia
+Koeberlinia spinosa
+Krameria grayi
+Krameria parvifolia
+Laguncularia racemosa
+Larix laricina
+Larix lyallii
+Larix occidentalis
+Larrea divaricata
+Leitneria floridana
+Leucaena pulverulenta
+Leucaena retusa
+Libocedrus decurrens
+Lippia wrightii
+Liquidambar styraciflua
+Liriodendron tulipifera
+Lithocarpus densiflorus
+Lophocereus schottii
+Lycium andersonii
+Lycium cooperi
+Lycium exsertum
+Lycium fremontii
+Lycium macrodon
+Lycium parishii
+Lyonia ferruginea
+Lysiloma latisiliquum
+Maclura pomifera
+Magnolia acuminata
+Magnolia ashei
+Magnolia fraseri
+Magnolia grandiflora
+Magnolia macrophylla
+Magnolia pyramidata
+Magnolia tripetala
+Magnolia virginiana
+Malus angustifolia
+Malus coronaria
+Malus diversifolia
+Malus ioensis
+Mammillaria grahamii
+Mastichodendron foetidissimum
+Menodora spinescens
+Metopium toxiferum
+Mimosa dysocarpa
+Mortonia scabrella
+Mortonia sempervirens
+Mortonia utahensis
+Morus microphylla
+Morus rubra
+Myrcianthes fragrans
+Myrica californica
+Myrica cerifera
+Myrica heterophylla
+Myrica inodora
+Myrica pensylvanica
+Nectandra coriacea
+Nemopanthus collinus
+Nolina bigelovii
+Nolina micrantha
+Nolina microcarpa
+Nolina texana
+Nyssa aquatica
+Nyssa ogeche
+Nyssa sylvatica
+Olneya tesota
+Opuntia basilaris
+Opuntia chlorotica
+Osmanthus americanus
+Ostrya knowltonii
+Ostrya virginiana
+Oxydendrum arboreum
+Parkinsonia aculeata
+Parthenium incanum
+Perityle emoryi
+Persea borbonia
+Peucephyllum schottii
+Phoradendron californicum
+Photinia arbutifolia
+Picea breweriana
+Picea engelmannii
+Picea glauca
+Picea mariana
+Picea pungens
+Picea rubens
+Picea sitchensis
+Pinckneya pubens
+Pinus albicaulis
+Pinus aristata
+Pinus attenuata
+Pinus balfouriana
+Pinus banksiana
+Pinus cembroides
+Pinus clausa
+Pinus contorta
+Pinus coulteri
+Pinus echinata
+Pinus edulis
+Pinus elliottii
+Pinus engelmannii
+Pinus flexilis
+Pinus glabra
+Pinus jeffreyi
+Pinus lambertiana
+Pinus leiophylla
+Pinus longaeva
+Pinus monophylla
+Pinus monticola
+Pinus muricata
+Pinus palustris
+Pinus ponderosa
+Pinus pungens
+Pinus quadrifolia
+Pinus resinosa
+Pinus rigida
+Pinus sabiniana
+Pinus serotina
+Pinus strobiformis
+Pinus strobus
+Pinus taeda
+Pinus virginiana
+Pithecellobium flexicaule
+Pithecellobium guadalupense
+Pithecellobium pallens
+Planera aquatica
+Platanus occidentalis
+Platanus racemosa
+Platanus wrightii
+Populus angustifolia
+Populus balsamifera
+Populus deltoides
+Populus fremontii
+Populus grandidentata
+Populus heterophylla
+Populus tremuloides
+Populus trichocarpa
+Prosopis glandulosa
+Prosopis pubescens
+Prosopis velutina
+Prunus alleghaniensis
+Prunus americana
+Prunus caroliniana
+Prunus emarginata
+Prunus fasciculata
+Prunus fremontii
+Prunus hortulana
+Prunus ilicifolia
+Prunus mexicana
+Prunus munsoniana
+Prunus nigra
+Prunus pensylvanica
+Prunus serotina
+Prunus subcordata
+Prunus umbellata
+Prunus virginiana
+Pseudotsuga macrocarpa
+Pseudotsuga menziesii
+Psorothamnus thompsoniae
+Ptelea crenulata
+Ptelea trifoliata
+Purshia glandulosa
+Quercus agrifolia
+Quercus alba
+Quercus arizonica
+Quercus arkansana
+Quercus bicolor
+Quercus chapmanii
+Quercus chrysolepis
+Quercus coccinea
+Quercus cornelius-mulleri
+Quercus douglasii
+Quercus dunnii
+Quercus durandii
+Quercus ellipsoidalis
+Quercus emoryi
+Quercus engelmannii
+Quercus falcata
+Quercus gambelii
+Quercus garryana
+Quercus georgiana
+Quercus glaucoides
+Quercus gravesii
+Quercus grisea
+Quercus havardii
+Quercus hinckleyi
+Quercus hypoleucoides
+Quercus ilicifolia
+Quercus imbricaria
+Quercus incana
+Quercus john-tuckeri
+Quercus kelloggii
+Quercus laevis
+Quercus laurifolia
+Quercus lobata
+Quercus lyrata
+Quercus macrocarpa
+Quercus marilandica
+Quercus michauxii
+Quercus mohriana
+Quercus muehlenbergii
+Quercus myrtifolia
+Quercus nigra
+Quercus nuttallii
+Quercus oblongifolia
+Quercus oglethorpensis
+Quercus palustris
+Quercus phellos
+Quercus prinus
+Quercus pungens
+Quercus rubra
+Quercus rugosa
+Quercus shumardii
+Quercus stellata
+Quercus toumeyi
+Quercus turbinella
+Quercus undulata complex
+Quercus velutina
+Quercus virginiana
+Quercus wislizeni
+Rapanea punctata
+Rhamnus betulaefolia
+Rhamnus californica
+Rhamnus caroliniana
+Rhamnus crocea
+Rhamnus purshiana
+Rhizophora mangle
+Rhododendron catawbiense
+Rhododendron macrophyllum
+Rhododendron maximum
+Rhus choriophylla
+Rhus copallina
+Rhus glabra
+Rhus integrifolia
+Rhus lanceolata
+Rhus laurina
+Rhus microphylla
+Rhus ovata
+Rhus typhina
+Robinia kelseyi
+Robinia neomexicana
+Robinia pseudoacacia
+Robinia viscosa
+Sabal mexicana
+Sabal minor
+Sabal palmetto
+Salazaria mexicana
+Salix alaxensis
+Salix amygdaloides
+Salix arbusculoides
+Salix bebbiana
+Salix bonplandiana
+Salix caroliniana
+Salix discolor
+Salix exigua
+Salix floridana
+Salix fluviatilis
+Salix geyeriana
+Salix hindsiana
+Salix hookeriana
+Salix laevigata
+Salix lasiandra
+Salix lasiolepis
+Salix lucida
+Salix mackenzieana
+Salix nigra
+Salix pellita
+Salix petiolaris
+Salix pyrifolia
+Salix scouleriana
+Salix sericea
+Salix sessilifolia
+Salix sitchensis
+Salix taxifolia
+Salix tracyi
+Salvia dorrii
+Salvia mohavensis
+Salvia pinguifolia
+Sambucus callicarpa
+Sambucus canadensis
+Sambucus glauca
+Sambucus melanocarpa
+Sambucus mexicana
+Sambucus velutina
+Sapindus drummondii
+Sapindus saponaria
+Sapium biloculare
+Sassafras albidum
+Sequoia sempervirens
+Sequoiadendron giganteum
+Serenoa repens
+Shepherdia argentea
+Shepherdia rotundifolia
+Simarouba glauca
+Simmondsia chinensis
+Solanum erianthum
+Sophora affinis
+Sophora secundiflora
+Sorbus americana
+Sorbus decora
+Sorbus scopulina
+Sorbus sitchensis
+Staphylea bolanderi
+Staphylea trifolia
+Stenocereus thurberi
+Stewartia malacodendron
+Stewartia ovata
+Styrax americana
+Styrax grandifolia
+Styrax platanifolia
+Suriana maritima
+Symphoricarpos longiflorus
+Symplocos tinctoria
+Taxodium distichum
+Taxus brevifolia
+Taxus canadensis
+Tetradymia glabrata
+Tetradymia stenolepis
+Thamnosma montana
+Thuja occidentalis
+Thuja plicata
+Tilia americana
+Tilia caroliniana
+Tilia heterophylla
+Torreya californica
+Toxicodendron vernix
+Trema micrantha
+Trixis californica
+Tsuga canadensis
+Tsuga caroliniana
+Tsuga heterophylla
+Tsuga mertensiana
+Ulmus alata
+Ulmus americana
+Ulmus crassifolia
+Ulmus rubra
+Ulmus serotina
+Ulmus thomasii
+Umbellularia californica
+Ungnadia speciosa
+Vaccinium arboreum
+Vauquelinia californica
+Viburnum lentago
+Viburnum nudum
+Viburnum obovatum
+Viburnum prunifolium
+Viburnum rufidulum
+Viburnum trilobum
+Viguiera stenoloba
+Washingtonia filifera
+Ximenia americana
+Yucca aloifolia
+Yucca angustissima
+Yucca baccata
+Yucca brevifolia
+Yucca elata
+Yucca faxoniana
+Yucca gloriosa
+Yucca mohavensis
+Yucca schottii
+Yucca treculeana
+Zanthoxylum americanum
+Zanthoxylum clava-herculis
+Zanthoxylum fagara
+Zanthoxylum hirsutum
+Ziziphus parryi
+
+--------------------
+
+DESCRIPTION OF netCDF (.nc) FILES:
+
+The variable names in the netCDF files generally match those in the data release .csv files, except where the .csv file variable name contains a forward slash, colon, period, or comma (i.e., "/", ":", ".", or ","). In the netCDF file variable short names, the forward slashes are replaced with an underscore symbol (i.e., "_") and the colons, periods, and commas are deleted. In the netCDF file variable long names, the punctuation in the name matches that in the .csv file variable names. The "country", "state, province, or territory", and "county" data in the .csv files are not included in the netCDF files.
+
+FILENAME:
+Bailey_ecoregions_on_25km_grid.nc = This .nc file contains data for Bailey ecoregions from the Ecoregions_and_Potential_Natural_Vegetation_on_25km_Grid.csv file. These data are described in Thompson and others (2007).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+Glacial_ice = Glacial ice (POLAR DOMAIN, Icecap Division)
+Ice_and_stoney_deserts = Ice and stoney deserts (POLAR DOMAIN, Tundra Division)
+Arctic_tundras = Arctic tundras (POLAR DOMAIN, Tundra Division)
+Tundras = Tundras (POLAR DOMAIN, Tundra Division)
+Polar_desert = Polar desert (POLAR DOMAIN, Tundra Mountains)
+Tundra_-_polar_desert = Tundra - polar desert (POLAR DOMAIN, Tundra Mountains)
+Tundra_-_meadow = Tundra - meadow (POLAR DOMAIN, Tundra Mountains)
+Oceanic_meadow_-_heath = Oceanic meadow - heath (POLAR DOMAIN, Tundra Mountains)
+Forest-tundras_and_open_woodlands = Forest-tundras and open woodlands (POLAR DOMAIN, Subarctic Division)
+Tayga_(boreal_forests) = Tayga (boreal forests) (POLAR DOMAIN, Subarctic Division)
+Open_woodland_-_tundra = Open woodland - tundra (POLAR DOMAIN, Subarctic Mountains)
+Tayga_-_tundra_medium = Tayga - tundra, medium (POLAR DOMAIN, Subarctic Mountains)
+Tayga_-_tundra_high = Tayga - tundra, high (POLAR DOMAIN, Subarctic Mountains)
+Mixed_deciduous-coniferous_forests = Mixed deciduous-coniferous forests (HUMID TEMPERATE DOMAIN, Warm Continental Division)
+Mixed_forest_-_coniferous_forest_-_tundra_medium = Mixed forest - coniferous forest - tundra, medium (HUMID TEMPERATE DOMAIN, Warm Continental Mountains)
+Mixed_forest_-_coniferous_forest_-_tundra_high = Mixed forest - coniferous forest - tundra, high (HUMID TEMPERATE DOMAIN, Warm Continental Mountains)
+Broadleaved_forests_oceanic = Broadleaved forests, oceanic (HUMID TEMPERATE DOMAIN, Hot Continental Division)
+Broadleaved_forests_continental = Broadleaved forests, continental (HUMID TEMPERATE DOMAIN, Hot Continental Division)
+Deciduous_or_mixed_forest_-_coniferous_forest_-_meadow_(Hot_Continental_Mountains) = Deciduous or mixed forest - coniferous forest - meadow (HUMID TEMPERATE DOMAIN, Hot Continental Mountains)
+Broadleaf_forest_-_meadow = Broadleaf forest - meadow (HUMID TEMPERATE DOMAIN, Hot Continental Mountains)
+Broadleaved-coniferous_evergreen_forests = Broadleaved-coniferous evergreen forests (HUMID TEMPERATE DOMAIN, Subtropical Division)
+Coniferous-broadleaved_semi-evergreen_forests = Coniferous-broadleaved semi-evergreen forests (HUMID TEMPERATE DOMAIN, Subtropical Division)
+Riverine_forest = Riverine forest (HUMID TEMPERATE DOMAIN, Subtropical Division)
+Mixed_forest_-_meadow= Mixed forest - meadow (HUMID TEMPERATE DOMAIN, Subtropical Mountains)
+Mixed_forests = Mixed forests (HUMID TEMPERATE DOMAIN, Marine Division)
+Deciduous_or_mixed_forest_-_coniferous_forest_-_meadow_(Marine_Mountains) = Deciduous or mixed forest - coniferous forest - meadow (HUMID TEMPERATE DOMAIN, Marine Mountains)
+Forest_-_meadow_medium = Forest - meadow, medium (HUMID TEMPERATE DOMAIN, Marine Mountains)
+Forest_-_meadow_high = Forest - meadow, high (HUMID TEMPERATE DOMAIN, Marine Mountains)
+Forest-steppes_and_prairies = Forest-steppes and prairies (HUMID TEMPERATE DOMAIN, Prairie Division)
+Prairies_and_savannas = Prairies and savannas (HUMID TEMPERATE DOMAIN, Prairie Division)
+Dry_steppe_(Mediterranean_Division) = Dry steppe (HUMID TEMPERATE DOMAIN, Mediterranean Division)
+Mediterranean_hardleaved_evergreen_forests_open_woodlands_and_shrub = Mediterranean hardleaved evergreen forests, open woodlands and shrub (HUMID TEMPERATE DOMAIN, Mediterranean Division)
+Redwood_forests = Redwood forests (HUMID TEMPERATE DOMAIN, Mediterranean Division)
+Mixed_forest_-_coniferous_forest_-_alpine_meadow = Mixed forest - coniferous forest - alpine meadow (HUMID TEMPERATE DOMAIN, Mediterranean Mountains)
+Mediterranean_woodland_or_shrub_-_mixed_or_coniferous_forest_-_steppe_or_meadow = Mediterranean woodland or shrub - mixed or coniferous forest - steppe or meadow (HUMID TEMPERATE DOMAIN, Mediterranean Mountains)
+Shrub_or_woodland_-_steppe_-_meadow = Shrub or woodland - steppe - meadow (HUMID TEMPERATE DOMAIN, Mediterranean Mountains)
+Coniferous_open_woodland_and_semideserts = Coniferous open woodland and semideserts (DRY DOMAIN, Tropical/Subtropical Steppe Division)
+Steppes_and_shrubs = Steppes and shrubs (DRY DOMAIN, Tropical/Subtropical Steppe Division)
+Shortgrass_steppes = Shortgrass steppes (DRY DOMAIN, Tropical/Subtropical Steppe Division)
+Steppe_or_semidesert_-_mixed_forest_-_alpine_meadow_or_steppe = Steppe or semidesert - mixed forest - alpine meadow or steppe (DRY DOMAIN, Tropical/Subtropical Steppe Mountains)
+Semideserts_(Tropical_Subtropical_Desert_Division) = Semideserts (DRY DOMAIN, Tropical/Subtropical Desert Division)
+Deserts_on_sand = Deserts on sand (DRY DOMAIN, Tropical/Subtropical Desert Division)
+Steppes = Steppes (DRY DOMAIN, Temperate Steppe Division)
+Dry_steppes_(Temperate_Steppe_Division) = Dry steppes (DRY DOMAIN, Temperate Steppe Division)
+Forest-steppe_-_coniferous_forest_-_meadow_-_tundra = Forest-steppe - coniferous forest - meadow - tundra (DRY DOMAIN, Temperate Steppe Mountains)
+Steppe_-_coniferous_forest_-_tundra = Steppe - coniferous forest - tundra (DRY DOMAIN, Temperate Steppe Mountains)
+Steppe_-_coniferous_forest = Steppe - coniferous forest (DRY DOMAIN, Temperate Steppe Mountains)
+Steppe_-_open_woodland_-_coniferous_forest_-_alpine_meadow = Steppe - open woodland - coniferous forest - alpine meadow (DRY DOMAIN, Temperate Steppe Mountains)
+Semideserts_(Temperate_Desert_Division) = Semideserts (DRY DOMAIN, Temperate Desert Division)
+Semideserts_and_deserts = Semideserts and deserts (DRY DOMAIN, Temperate Desert Division)
+Semidesert_-_open_woodland_-_coniferous_forest_-_alpine_meadow = Semidesert - open woodland - coniferous forest - alpine meadow (DRY DOMAIN, Temperate Desert Mountains)
+Open_woodlands_shrubs_and_savannas = Open woodlands, shrubs, and savannas (HUMID TROPICAL DOMAIN, Savanna Division)
+ALL_BAILEY_ECOREGIONS = ALL BAILEY ECOREGIONS
+
+--------------------
+
+FILENAME:
+Kuchler_potential_natural_vegetation_regions_on_25km_grid.nc = This .nc file contains data for Kuchler potential natural vegetation regions from the Ecoregions_and_Potential_Natural_Vegetation_on_25km_Grid.csv file. These data are described in Thompson and others (2006, 2007).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+
+Water_Glaciers_or_no_data = Water, Glaciers, or no data
+Spruce-cedar-hemlock_forest_(Picea-Thuja-Tsuga) = Spruce-cedar-hemlock forest (Picea-Thuja-Tsuga) (WESTERN FORESTS, Needleleaf Forests)
+Cedar-hemlock-Douglas_fir_forest_(Thuja-Tsuga-Pseudotsuga) = Cedar-hemlock-Douglas fir forest (Thuja-Tsuga-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Silver_fir-Douglas_fir_forest_(Abies-Pseudotsuga) = Silver fir-Douglas fir forest (Abies-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Fir-hemlock_forest_(Abies-Tsuga) = Fir-hemlock forest (Abies-Tsuga) (WESTERN FORESTS, Needleleaf Forests)
+Mixed_conifer_forest_(Abies-Pinus-Pseudotsuga) = Mixed conifer forest (Abies-Pinus-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Redwood_forest_(Sequoia-Pseudotsuga) = Redwood forest (Sequoia-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Red_fir_forest_(Abies) = Red fir forest (Abies) (WESTERN FORESTS, Needleleaf Forests)
+Lodgepole_pine-subalpine_forest_(Pinus-Tsuga) = Lodgepole pine-subalpine forest (Pinus-Tsuga) (WESTERN FORESTS, Needleleaf Forests)
+Pine-cypress_forest_(Pinus-Cupressus) = Pine-cypress forest (Pinus-Cupressus) (WESTERN FORESTS, Needleleaf Forests)
+Ponderosa_shrub_forest_(Pinus) = Ponderosa shrub forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Western_ponderosa_forest_(Pinus) = Western ponderosa forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Douglas_fir_forest_(Pseudotsuga) = Douglas fir forest (Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Cedar-hemlock-pine_forest_(Thuja-Tsuga-Pinus) = Cedar-hemlock-pine forest (Thuja-Tsuga-Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Grand_fir-Douglas_fir_forest_(Abies-Pseudotsuga) = Grand fir-Douglas fir forest (Abies-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Western_spruce-fir_forest_(Picea-Abies) = Western spruce-fir forest (Picea-Abies) (WESTERN FORESTS, Needleleaf Forests)
+Eastern_ponderosa_forest_(Pinus) = Eastern ponderosa forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Black_Hills_pine_forest_(Pinus) = Black Hills pine forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Pine-Douglas_fir_forest_(Pinus-Pseudotsuga) = Pine-Douglas fir forest (Pinus-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Arizona_pine_forest_(Pinus) = Arizona pine forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Spruce-fir-Douglas_fir_forest_(Picea-Abies-Pseudotsuga) = Spruce-fir-Douglas fir forest (Picea-Abies-Pseudotsuga) (WESTERN FORESTS, Needleleaf Forests)
+Southwestern_spruce-fir_forest_(Picea-Abies) = Southwestern spruce-fir forest (Picea-Abies) (WESTERN FORESTS, Needleleaf Forests)
+Great_Basin_pine_forest_(Pinus) = Great Basin pine forest (Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Juniper-pinyon_woodland_(Juniperus-Pinus) = Juniper-pinyon woodland (Juniperus-Pinus) (WESTERN FORESTS, Needleleaf Forests)
+Juniper_steppe_woodland_(Juniperus-Artemisia-Agropyron) = Juniper steppe woodland (Juniperus-Artemisia-Agropyron) (WESTERN FORESTS, Needleleaf Forests)
+Alder-ash_forest_(Alnus-Fraxinus) = Alder-ash forest (Alnus-Fraxinus) (WESTERN FORESTS, Broadleaf Forests)
+Oregon_oakwoods_(Quercus) = Oregon oakwoods (Quercus) (WESTERN FORESTS, Broadleaf Forests)
+Mosaic_of_cedar-hemlock-Douglas_fir_forest_and_Oregon_oakwoods = Mosaic of cedar-hemlock-Douglas fir forest and Oregon oakwoods (WESTERN FORESTS, Broadleaf and Needleleaf Forests)
+California_mixed_evergreen_forest_(Quercus-Arbutus-Pseudotsuga) = California mixed evergreen forest (Quercus-Arbutus-Pseudotsuga) (WESTERN FORESTS, Broadleaf and Needleleaf Forests)
+California_oakwoods_(Quercus) = California oakwoods (Quercus) (WESTERN FORESTS, Broadleaf and Needleleaf Forests)
+Oak-juniper_woodland_(Quercus-Juniperus) = Oak-juniper woodland (Quercus-Juniperus) (WESTERN FORESTS, Broadleaf and Needleleaf Forests)
+Transition_between_oak-juniper_woodland_and_mountain_mahogany-oak_scrub = Transition between oak-juniper woodland and mountain mahogany-oak scrub (WESTERN FORESTS, Broadleaf and Needleleaf Forests)
+Chaparral_(Adenostoma-Arctostaphylos-Ceanothus) = Chaparral (Adenostoma-Arctostaphylos-Ceanothus) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Montane_chaparral_(Arctostaphylos-Castanopsis-Ceanothus) = Montane chaparral (Arctostaphylos-Castanopsis-Ceanothus) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Coastal_sagebrush_(Salvia-Eriogonum) = Coastal sagebrush (Salvia-Eriogonum) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Mosaic_of_California_oakwoods_and_coastal_sagebrush = Mosaic of California oakwoods and coastal sagebrush (WESTERN SHRUB AND GRASSLAND, Shrub)
+Mountain_mahogany-oak_scrub_(Cercocarpus-Quercus) = Mountain mahogany-oak scrub (Cercocarpus-Quercus) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Great_Basin_sagebrush_(Artemisia) = Great Basin sagebrush (Artemisia) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Blackbrush_(Coleogyne) = Blackbrush (Coleogyne) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Saltbush-greasewood_(Atriplex-Sarcobatus) = Saltbush-greasewood (Atriplex-Sarcobatus) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Creosote_bush_(Larrea) = Creosote bush (Larrea) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Creosote_bush-bur_sage_(Larrea-Franseria) = Creosote bush-bur sage (Larrea-Franseria) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Palo_verde-cactus_shrub_(Cercidium-Opuntia) = Palo verde-cactus shrub (Cercidium-Opuntia) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Creosote_bush-tarbush_(Larrea-Flourensia) = Creosote bush-tarbush (Larrea-Flourensia) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Ceniza_shrub_(Leucophyllum-Larrea-Prosopis) = Ceniza shrub (Leucophyllum-Larrea-Prosopis) (WESTERN SHRUB AND GRASSLAND, Shrub)
+Desert:_vegetation_largely_absent = Desert: vegetation largely absent (WESTERN SHRUB AND GRASSLAND, Shrub)
+Fescue-oatgrass_(Festuca-Danthonia) = Fescue-oatgrass (Festuca-Danthonia) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+California_steppe_(Stipa) = California steppe (Stipa) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Tule_marshes_(Scirpus-Typha) = Tule marshes (Scirpus-Typha) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Fescue-wheatgrass_(Festuca-Agropyron) = Fescue-wheatgrass (Festuca-Agropyron) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Wheatgrass-bluegrass_(Agropyron-Poa) = Wheatgrass-bluegrass (Agropyron-Poa) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Alpine_meadows_and_barren_(Agrostis_Carex_Festuca_Poa) = Alpine meadows and barren (Agrostis, Carex, Festuca, Poa) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Fescue-mountain_muhly_prairie_(Festuca-Muhlenbergia) = Fescue-mountain muhly prairie (Festuca-Muhlenbergia) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Grama-galleta_steppe_(Bouteloua-Hilaria) = Grama-galleta steppe (Bouteloua-Hilaria) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Grama-tobosa_prairie_(Bouteloua-Hilaria) = Grama-tobosa prairie (Bouteloua-Hilaria) (WESTERN SHRUB AND GRASSLAND, Grasslands)
+Sagebrush_steppe_(Artemisia-Agropyron) = Sagebrush steppe (Artemisia-Agropyron) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Wheatgrass-needlegrass_shrubsteppe_(Agropyron-Stipa-Artemisia) = Wheatgrass-needlegrass shrubsteppe (Agropyron-Stipa-Artemisia) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Galleta-three_awn_shrubsteppe_(Hilaria-Aristida) = Galleta-three awn shrubsteppe (Hilaria-Aristida) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Grama-tobosa_shrubsteppe_(Bouteloua-Hilaria-Larrea) = Grama-tobosa shrubsteppe (Bouteloua-Hilaria-Larrea) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Trans-Pecos_shrub_savanna_(Flourensia-Larrea) = Trans-Pecos shrub savanna (Flourensia-Larrea) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Mesquite_savanna_(Prosopis-Hilaria) = Mesquite savanna (Prosopis-Hilaria) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Mesquite-acacia_savanna_(Prosopis-Acacia-Andropogon-Setaria) = Mesquite-acacia savanna (Prosopis-Acacia-Andropogon-Setaria) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Mesquite-live_oak_savanna_(Prosopis-Quercus-Andropogon) = Mesquite-live oak savanna (Prosopis-Quercus-Andropogon) (WESTERN SHRUB AND GRASSLAND, Shrub and Grasslands Combinations)
+Foothills_prairie_(Agropyron-Festuca-Stipa) = Foothills prairie (Agropyron-Festuca-Stipa) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Grama-needlegrass-wheatgrass_(Bouteloua-Stipa-Agropyron) = Grama-needlegrass-wheatgrass (Bouteloua-Stipa-Agropyron) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Grama-buffalo_grass_(Bouteloua-Buchloe) = Grama-buffalo grass (Bouteloua-Buchloe) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Wheatgrass-needlegrass_(Agropyron-Stipa) = Wheatgrass-needlegrass (Agropyron-Stipa) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Wheatgrass-bluestem-needlegrass_(Agropyron-Andropogon-Stipa) = Wheatgrass-bluestem-needlegrass (Agropyron-Andropogon-Stipa) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Wheatgrass-grama-buffalo_grass_(Agropyron-Bouteloua-Buchloe) = Wheatgrass-grama-buffalo grass (Agropyron-Bouteloua-Buchloe) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Bluestem-grama_prairie_(Andropogon-Bouteloua) = Bluestem-grama prairie (Andropogon-Bouteloua) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Sandsage-bluestem_prairie_(Artemisia-Andropogon) = Sandsage-bluestem prairie (Artemisia-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Shinnery_(Quercus-Andropogon) = Shinnery (Quercus-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Northern_cordgrass_prairie_(Distichlis-Spartina) = Northern cordgrass prairie (Distichlis-Spartina) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Bluestem_prairie_(Andropogon-Panicum-Sorghastrum) = Bluestem prairie (Andropogon-Panicum-Sorghastrum) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Nebraska_Sandhills_prairie_(Andropogon-Calamovilfa) = Nebraska Sandhills prairie (Andropogon-Calamovilfa) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Blackland_prairie_(Andropogon-Stipa) = Blackland prairie (Andropogon-Stipa) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Bluestem-sacahuista_prairie_(Andropogon-Spartina) = Bluestem-sacahuista prairie (Andropogon-Spartina) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Southern_cordgrass_prairie_(Spartina) = Southern cordgrass prairie (Spartina) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Palmetto_prairie_(Serenoa-Aristida) = Palmetto prairie (Serenoa-Aristida) (CENTRAL AND EASTERN GRASSLANDS, Grasslands)
+Marl-Everglades_(Mariscus_and_Persea-Taxodium) = Marl-Everglades (Mariscus and Persea-Taxodium) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Oak_savanna_(Quercus-Andropogon) = Oak savanna (Quercus-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Mosaic_of_bluestem_prairie_and_oak-hickory_forest = Mosaic of bluestem prairie and oak-hickory forest (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Cedar_glades_(Juniperus-Quercus-Sporobolus) = Cedar glades (Juniperus-Quercus-Sporobolus) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Cross_timbers_(Quercus-Andropogon) = Cross timbers (Quercus-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Mesquite-buffalo_grass_(Prosopis-Buchloe) = Mesquite-buffalo grass (Prosopis-Buchloe) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Juniper-oak_savanna_(Juniperus-Quercus-Andropogon) = Juniper-oak savanna (Juniperus-Quercus-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Mesquite-oak_savanna_(Prosopis-Quercus-Andropogon) = Mesquite-oak savanna (Prosopis-Quercus-Andropogon) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Fayette_prairie_(Andropogon-Buchloe) = Fayette prairie (Andropogon-Buchloe) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Blackbelt_(Liquidambar-Quercus-Juniperus) = Blackbelt (Liquidambar-Quercus-Juniperus) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Live_oak-sea_oats_(Quercus-Uniola) = Live oak-sea oats (Quercus-Uniola) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Cypress_savanna_(Taxodium-Mariscus) = Cypress savanna (Taxodium-Mariscus) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Everglades_(Mariscus_and_Magnolia-Persea) = Everglades (Mariscus and Magnolia-Persea) (CENTRAL AND EASTERN GRASSLANDS, Grassland and Forest Combinations)
+Great_Lakes_spruce-fir_forest_(Picea-Abies) = Great Lakes spruce-fir forest (Picea-Abies) (EASTERN FORESTS, Needleleaf Forests)
+Conifer_bog_(Larix-Picea-Thuja) = Conifer bog (Larix-Picea-Thuja) (EASTERN FORESTS, Needleleaf Forests)
+Great_Lakes_pine_forest_(Pinus) = Great Lakes pine forest (Pinus) (EASTERN FORESTS, Needleleaf Forests)
+Northeastern_spruce-fir_forest_(Picea-Abies) = Northeastern spruce-fir forest (Picea-Abies) (EASTERN FORESTS, Needleleaf Forests)
+Northern_floodplain_forest_(Populus-Salix-Ulmus) = Northern floodplain forest (Populus-Salix-Ulmus) (EASTERN FORESTS, Broadleaf Forests)
+Maple-basswood_forest_(Acer-Tilia) = Maple-basswood forest (Acer-Tilia) (EASTERN FORESTS, Broadleaf Forests)
+Oak-hickory_forest_(Quercus-Carya) = Oak-hickory forest (Quercus-Carya) (EASTERN FORESTS, Broadleaf Forests)
+Elm-ash_forest_(Ulmus-Fraxinus) = Elm-ash forest (Ulmus-Fraxinus) (EASTERN FORESTS, Broadleaf Forests)
+Beech-maple_forest_(Fagus-Acer) = Beech-maple forest (Fagus-Acer) (EASTERN FORESTS, Broadleaf Forests)
+Mixed_mesophytic_forest_(Acer-Aesculus-Fagus-Liriodendron-Quercus-Tilia) = Mixed mesophytic forest (Acer-Aesculus-Fagus-Liriodendron-Quercus-Tilia) (EASTERN FORESTS, Broadleaf Forests)
+Appalachian_oak_forest_(Quercus) = Appalachian oak forest (Quercus) (EASTERN FORESTS, Broadleaf Forests)
+Mangrove_(Avicennia-Rhizophora) = Mangrove (Avicennia-Rhizophora)  (EASTERN FORESTS, Broadleaf Forests)
+Northern_hardwoods_(Acer-Betula-Fagus-Tsuga) = Northern hardwoods (Acer-Betula-Fagus-Tsuga) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Northern_hardwoods-fir_forest_(Acer-Betula-Abies-Tsuga) = Northern hardwoods-fir forest (Acer-Betula-Abies-Tsuga) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Northern_hardwoods-spruce_forest_(Acer-Betula-Fagus-Picea-Tsuga) = Northern hardwoods-spruce forest (Acer-Betula-Fagus-Picea-Tsuga) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Transition_between_Appalachian_oak_forest_and_northern_hardwoods = Transition between Appalachian oak forest and northern hardwoods (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Northeastern_oak-pine_forest_(Quercus-Pinus) = Northeastern oak-pine forest (Quercus-Pinus) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Oak-hickory-pine_forest_(Quercus-Carya-Pinus) = Oak-hickory-pine forest (Quercus-Carya-Pinus) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Southern_mixed_forest_(Fagus-Liquidambar-Magnolia-Pinus-Quercus) = Southern mixed forest (Fagus-Liquidambar-Magnolia-Pinus-Quercus) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Southern_floodplain_forest_(Quercus-Nyssa-Taxodium) = Southern floodplain forest (Quercus-Nyssa-Taxodium) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Pocosin_(Pinus-Ilex) = Pocosin (Pinus-Ilex) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Sand_pine_scrub_(Pinus-Quercus) = Sand pine scrub (Pinus-Quercus) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Subtropical_pine_forest_(Pinus-Tetrazygia) = Subtropical pine forest (Pinus-Tetrazygia) (EASTERN FORESTS, Broadleaf and Needleleaf Forests)
+Hemlock-spruce_forest_(Tsuga-Picea) = Hemlock-spruce forest (Tsuga-Picea) (no Level I or Level II categories for Alaska)
+Spruce-birch_forest_(Picea-Betula) = Spruce-birch forest (Picea-Betula) (no Level I or Level II categories for Alaska)
+Black_spruce_forest_(Picea) = Black spruce forest (Picea) (no Level I or Level II categories for Alaska)
+Muskeg_(Eriophorum-Sphagnum-Betula) = Muskeg (Eriophorum-Sphagnum-Betula) (no Level I or Level II categories for Alaska)
+Alder_thickets_(Alnus) = Alder thickets (Alnus) (no Level I or Level II categories for Alaska)
+Cottonsedge_tundra_(Eriophorum) = Cottonsedge tundra (Eriophorum) (no Level I or Level II categories for Alaska)
+Watersedge_tundra_(Carex) = Watersedge tundra (Carex) (no Level I or Level II categories for Alaska)
+Dryas_meadows_and_barren_(Dryas-Carex-Betula) = Dryas meadows and barren (Dryas-Carex-Betula) (no Level I or Level II categories for Alaska)
+Aleutian_meadows_(Calamagrostis-Anemone) = Aleutian meadows (Calamagrostis-Anemone) (no Level I or Level II categories for Alaska)
+Aleutian_heath_and_barren_(Empetrum-Vaccinium) = Aleutian heath and barren (Empetrum-Vaccinium) (no Level I or Level II categories for Alaska)
+ALL_KUCHLER_POTENTIAL_NATURAL_VEGETATION_REGIONS = ALL KUCHLER POTENTIAL NATURAL VEGETATION REGIONS
+
+FILENAME:
+WWF_ecoregions_on_25km_grid.nc = This .nc file contains data for WWF ecoregions from the Ecoregions_and_Potential_Natural_Vegetation_on_25km_Grid.csv file. These data are described in Thompson and others (2007).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+
+Lake_or_Rock_and_ice = Lake or Rock and ice
+South_Florida_Rocklands = South Florida Rocklands (TROPICAL BROADLEAF FORESTS, Moist Forest)
+Sierra_Madre_Occidental_Pine-Oak_Forests = Sierra Madre Occidental Pine-Oak Forests (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Sierra_Madre_Oriental_Oak-Pine_Forests = Sierra Madre Oriental Oak-Pine Forests (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Willamette_Valley_Forest = Willamette Valley Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Western_Great_Lakes_Forest = Western Great Lakes Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Eastern_Forest_Boreal_Transition = Eastern Forest/Boreal Transition (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Upper_Midwest_Forest_Savanna_Transition_Zone = Upper Midwest Forest/Savanna Transition Zone (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Southern_Great_Lakes_Forest = Southern Great Lakes Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Eastern_Great_Lakes_Lowland_Forest = Eastern Great Lakes Lowland Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+New_England_Acadian_Forest = New England/Acadian Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Gulf_of_St._Lawrence_Lowland_Forest = Gulf of St. Lawrence Lowland Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Northeastern_Coastal_Forest = Northeastern Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Allegheny_Highlands_Forest = Allegheny Highlands Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Appalachian_Blue_Ridge_Forest = Appalachian/Blue Ridge Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Appalachian_Mixed_Mesophytic_Forest = Appalachian Mixed Mesophytic Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Central_U.S._Hardwood_Forest = Central U.S. Hardwood Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Ozark_Mountain_Forest = Ozark Mountain Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Mississippi_Lowland_Forest = Mississippi Lowland Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+East_Central_Texas_Forest = East Central Texas Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Southeastern_Mixed_Forest = Southeastern Mixed Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Broadleaf and Mixed Forests)
+Northern_Pacific_Coastal_Forest = Northern Pacific Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Queen_Charlotte_Islands = Queen Charlotte Islands (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Central_British_Columbia_Mountain_Forest = Central British Columbia Mountain Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Alberta_Mountain_Forest = Alberta Mountain Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Fraser_Plateau_and_Basin_Complex = Fraser Plateau and Basin Complex (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Alberta_British_Columbia_Foothills_Forest = Alberta/British Columbia Foothills Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Northern_Transitional_Alpine_Forest = Northern Transitional Alpine Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+North_Central_Rockies_Forest = North Central Rockies Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Okanogan_Dry_Forest = Okanogan Dry Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Cascade_Mountains_Leeward_Forest = Cascade Mountains Leeward Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+British_Columbia_Mainland_Coastal_Forest = British Columbia Mainland Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Central_Pacific_Coastal_Forest = Central Pacific Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Puget_Lowland_Forest = Puget Lowland Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Central_and_Southern_Cascades_Forest = Central and Southern Cascades Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Eastern_Cascades_Forest = Eastern Cascades Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Blue_Mountains_Forest = Blue Mountains Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Klamath-Siskiyou_Forest = Klamath-Siskiyou Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Northern_California_Coastal_Forest = Northern California Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Sierra_Nevada_Forest = Sierra Nevada Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Great_Basin_Montane_Forest = Great Basin Montane Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+South_Central_Rockies_Forest = South Central Rockies Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Wasatch_and_Uinta_Montane_Forest = Wasatch and Uinta Montane Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Colorado_Rockies_Forest = Colorado Rockies Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Arizona_Mountains_Forest = Arizona Mountains Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Piney_Woods_Forest = Piney Woods Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Atlantic_Coastal_Pine_Barrens = Atlantic Coastal Pine Barrens (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Middle_Atlantic_Coastal_Forest = Middle Atlantic Coastal Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Southeastern_Conifer_Forest = Southeastern Conifer Forest (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Florida_Sand_Pine_Scrub = Florida Sand Pine Scrub (TEMPERATE CONIFER, BROADLEAF AND MIXED FORESTS, Coniferous Forests)
+Palouse_Grassland = Palouse Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+California_Central_Valley_Grassland = California Central Valley Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Canadian_Aspen_Forest_and_Parkland = Canadian Aspen Forest and Parkland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Northern_Mixed_Grassland = Northern Mixed Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Montana_Valley_and_Foothill_Grassland = Montana Valley and Foothill Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Northwestern_Mixed_Grassland = Northwestern Mixed Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Northern_Tall_Grassland = Northern Tall Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Central_Tall_Grassland = Central Tall Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Flint_Hills_Tall_Grassland = Flint Hills Tall Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Nebraska_Sand_Hills_Mixed_Grassland = Nebraska Sand Hills Mixed Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Western_Short_Grassland = Western Short Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Central_and_Southern_Mixed_Grassland = Central and Southern Mixed Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Central_Forest_Grassland_Transition_Zone = Central Forest/Grassland Transition Zone (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Edwards_Plateau_Savanna = Edwards Plateau Savanna (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Texas_Blackland_Prairies = Texas Blackland Prairies (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Western_Gulf_Coastal_Grassland = Western Gulf Coastal Grassland (GRASSLANDS, SAVANNAS, SHRUBLANDS, Grasslands/Savanna/Shrub)
+Everglades = Everglades (GRASSLANDS, SAVANNAS, SHRUBLANDS, Flooded Grasslands)
+California_Coastal_Sage_and_Chaparral = California Coastal Sage and Chaparral (MEDITERRANEAN AND XERIC FORMATIONS, Mediterranean Scrub and Savanna)
+California_Interior_Chaparral_and_Woodland = California Interior Chaparral and Woodland (MEDITERRANEAN AND XERIC FORMATIONS, Mediterranean Scrub and Savanna)
+California_Montane_Chaparral_and_Woodland = California Montane Chaparral and Woodland (MEDITERRANEAN AND XERIC FORMATIONS, Mediterranean Scrub and Savanna)
+Sonoran_Desert = Sonoran Desert (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Chihuahuan_Desert = Chihuahuan Desert (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Tamaulipan_Mezquital = Tamaulipan Mezquital (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Snake_Columbia_Shrub_Steppe = Snake/Columbia Shrub Steppe (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Great_Basin_Shrub_Steppe = Great Basin Shrub Steppe (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Wyoming_Basin_Shrub_Steppe = Wyoming Basin Shrub Steppe (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Colorado_Plateau_Shrubland = Colorado Plateau Shrubland (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Mojave_Desert = Mojave Desert (MEDITERRANEAN AND XERIC FORMATIONS, Xeric Shrublands/Scrublands/Deserts)
+Interior_Alaska_Yukon_Lowland_Taiga = Interior Alaska/Yukon Lowland Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Alaska_Peninsula_Montane_Taiga = Alaska Peninsula Montane Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Cook_Inlet_Taiga = Cook Inlet Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Copper_Plateau_Taiga = Copper Plateau Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Northwest_Territories_Taiga = Northwest Territories Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Yukon_Interior_Dry_Forest = Yukon Interior Dry Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Northern_Cordillera_Forest = Northern Cordillera Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Muskwa_Slave_Lake_Forest = Muskwa/Slave Lake Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Northern_Canadian_Shield_Taiga = Northern Canadian Shield Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Mid-Continental_Canadian_Forest = Mid-Continental Canadian Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Midwestern_Canadian_Shield_Forest = Midwestern Canadian Shield Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Central_Canadian_Shield_Forest = Central Canadian Shield Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Southern_Hudson_Bay_Taiga = Southern Hudson Bay Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Eastern_Canadian_Shield_Taiga = Eastern Canadian Shield Taiga (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Eastern_Canadian_Forest = Eastern Canadian Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Newfoundland_Highland_Forest  = Newfoundland Highland Forest (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+South_Avalon-Burin_Oceanic_Barrens = South Avalon-Burin Oceanic Barrens (BOREAL FOREST, TAIGA AND TUNDRA, Boreal Forest/Taiga)
+Beringia_Lowland_Tundra = Beringia Lowland Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Beringia_Upland_Tundra = Beringia Upland Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Alaska_St._Elias_Range_Tundra = Alaska/St. Elias Range Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Pacific_Coastal_Mountain_Tundra_and_Ice_Fields = Pacific Coastal Mountain Tundra and Ice Fields (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Interior_Yukon_Alaska_Alpine_Tundra = Interior Yukon/Alaska Alpine Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Ogilvie_MacKenzie_Alpine_Tundra = Ogilvie/MacKenzie Alpine Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Brooks_British_Range_Tundra = Brooks/British Range Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Arctic_Foothills_Tundra = Arctic Foothills Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Arctic_Coastal_Tundra = Arctic Coastal Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Low_Arctic_Tundra = Low Arctic Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Middle_Arctic_Tundra = Middle Arctic Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+High_Arctic_Tundra = High Arctic Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Davis_Highlands_Tundra = Davis Highlands Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Baffin_Coastal_Tundra = Baffin Coastal Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+Torngat_Mountain_Tundra = Torngat Mountain Tundra (BOREAL FOREST, TAIGA AND TUNDRA, Tundra)
+ALL_WWF_ECOREGIONS = ALL WWF ECOREGIONS
+
+--------------------
+
+FILENAME:
+modern_climate_and_bioclimate_on_25km_grid.nc = This .nc file contains climate and bioclimate data from the Modern_Climate_and_Bioclimate_on_25km_Grid.csv file. These data are described in Thompson and others (2012a, 2015).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+
+Other variables in this file include climate and bioclimatic data. These variables are listed above in the description of the Modern_Climate_and_Bioclimate_on_25km_Grid.csv file and are not repeated here.
+
+--------------------
+
+FILENAME:
+presence_absence_of_grouped_taxa_on_25km_grid.nc = This .nc file contains data for the grouped plant taxa from the Presence_Absence_of_Grouped_Taxa_on_25km_Grid.csv file. These data are described in Thompson and others (2015).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+
+Other variables in this file provide presence-absence data for the grouped plant taxa in the data set.  These grouped taxa are listed above in the description of the Presence_Absence_of_Grouped_Taxa_on_25km_Grid.csv file and are not repeated here. A "1" indicates that the group is present and a "0" indicates that it is absent.
+
+--------------------
+
+FILENAME:
+presence_absence_of_individual_species_on_25km_grid.nc = This .nc file contains data for individual species from the Presence_Absence_of_Individual_Species_on_25km_Grid.csv file. These data are described in Thompson and others (2015).
+
+DESCRIPTIONS OF FIELD NAMES:
+y = y coordinate of projection (m)
+x = x coordinate of projection (m)
+ID = unique grid-point identifier
+latitude = latitude of grid point in decimal degrees (These grid-point latitude values were recalculated using 6 decimal places whereas the latitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+longitude = longitude of grid point in decimal degrees (These grid-point longitude values were recalculated using 6 decimal places whereas the longitudes in the .csv file have 3 decimal places. See discussion in the "Evolution of the Atlas Over the 16 Years Between Volumes A &amp; B and G" section above.)
+row = row identifier (y-coordinate)
+col = column identifier (x-coordinate)
+elevation = elevation of grid point in meters; 9999 = missing elevation value assigned for 35 coastal grid points. See readme file for more details.
+albers_conical_equal_area = Albers conical equal-area projection details
+
+Other variables in this file provide presence-absence data for the individual plant species in the data set.  These species are listed above in the description of the Presence_Absence_of_Individual_Species_on_25km_Grid.csv file and are not repeated here. A "1" indicates that the taxon is present in the assemblage and a "0" indicates that it is absent.
+
+--------------------
+
+DESCRIPTION OF MUTUAL CLIMATIC RANGE (MCR) TABLES :
+
+These files contain mutual climatic range (MCR) weights for the 690 species and 67 grouped taxa in Thompson and others (2015) using the climate data in Thompson and others (2015) and the methods described in Thompson and others (2012a,b). In these files, weights of 1, 2, 3, and 4 identify the climatic increments (in the first column of each table) representing different percentiles of a species or grouped taxa distribution:
+4 = the 10th to 90th percentiles;
+3 = the 6th to 9th and 91st to 94th percentiles;
+2 = the 2nd to 5th and 95th to 99th percentiles;
+1 = the 1st and 100th percentiles.
+
+ERRATUM
+The distribution of California torreya (Torreya californica) in this data release and in Thompson and others (2015) contains an erroneous grid point in Nova Scotia (Canada). This error also affects the data for taxa groups Cupressaceae/Taxaceae and Cupressaceae/Taxaceae West, which include Torreya californica.
+
+GROUP TAXA
+Group_Bioclimate_AE_PE_MCR_weights.csv = moisture index (calculated as actual evapotranspiration divided by potential evapotranspiration) MCR weights for groups of related species
+Group_Bioclimate_GDD5_MCR_weights.csv = growing degree days (on a 5 degrees C base) MCR weights for groups of related species
+Group_Bioclimate_MTCO_MCR_weights.csv = mean temperature of the coldest month (degrees C) MCR weights for groups of related species
+Group_Bioclimate_MTWA_MCR_weights.csv = mean temperature of the warmest month (degrees C) MCR weights for groups of related species
+Group_Bioclimate_Temperature_Maximum_MCR_weights.csv = absolute maximum temperature (degrees C) MCR weights for groups of related species
+Group_Bioclimate_Temperature_Minimum_MCR_weights.csv = absolute minimum temperature (degrees C) MCR weights for groups of related species
+Group_Precipitation_01_January_MCR_weights.csv = mean January total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_02_February_MCR_weights.csv = mean February total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_03_March_MCR_weights.csv = mean March total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_04_April_MCR_weights.csv = mean April total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_05_May_MCR_weights.csv = mean May total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_06_June_MCR_weights.csv = mean June total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_07_July_MCR_weights.csv = mean July total precipitation (mm) MCR weights for group of related species
+Group_Precipitation_08_August_MCR_weights.csv = mean August total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_09_September_MCR_weights.csv = mean September total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_10_October_MCR_weights.csv = mean October total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_11_November_MCR_weights.csv = mean November total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_12_December_MCR_weights.csv = mean December total precipitation (mm) MCR weights for groups of related species
+Group_Precipitation_Annual_MCR_weights.csv = mean annual total precipitation (mm) MCR weights for groups of related species
+Group_Temperature_01_January_MCR_weights.csv = mean January temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_02_February_MCR_weights.csv = mean February temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_03_March_MCR_weights.csv = mean March temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_04_April_MCR_weights.csv = mean April temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_05_May_MCR_weights.csv = mean May temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_06_June_MCR_weights.csv = mean June temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_07_July_MCR_weights.csv = mean July temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_08_August_MCR_weights.csv = mean August temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_09_September_MCR_weights.csv = mean September temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_10_October_MCR_weights.csv = mean October temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_11_November_MCR_weights.csv = mean November temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_12_December_MCR_weights.csv = mean December temperature (degrees C) MCR weights for groups of related species
+Group_Temperature_Annual_MCR_weights.csv = mean annual temperature (degrees C) MCR weights for groups of related species
+
+SPECIES
+Species_Bioclimate_AE_PE_MCR_weights.csv = moisture index (calculated as actual evapotranspiration divided by potential evapotranspiration) MCR weights for individual species
+Species_Bioclimate_GDD5_MCR_weights.csv = growing degree days (on a 5 degrees C base) MCR weights for individual species
+Species_Bioclimate_MTCO_MCR_weights.csv = mean temperature of the coldest month (degrees C) MCR weights for individual species
+Species_Bioclimate_MTWA_MCR_weights.csv = mean temperature of the warmest month (degrees C) MCR weights for individual species
+Species_Bioclimate_Temperature_Maximum_MCR_weights.csv = absolute maximum temperature (degrees C) MCR weights for individual species
+Species_Bioclimate_Temperature_Minimum_MCR_weights.csv = absolute minimum temperature (degrees C) MCR weights for individual species
+Species_Precipitation_01_January_MCR_weights.csv = mean January total precipitation (mm) MCR weights for individual species
+Species_Precipitation_02_February_MCR_weights.csv = mean February total precipitation (mm) MCR weights for individual species
+Species_Precipitation_03_March_MCR_weights.csv = mean March total precipitation (mm) MCR weights for individual species
+Species_Precipitation_04_April_MCR_weights.csv = mean April total precipitation (mm) MCR weights for individual species
+Species_Precipitation_05_May_MCR_weights.csv = mean May total precipitation (mm) MCR weights for individual species
+Species_Precipitation_06_June_MCR_weights.csv = mean June total precipitation (mm) MCR weights for individual species
+Species_Precipitation_07_July_MCR_weights.csv = mean July total precipitation (mm) MCR weights for individual species
+Species_Precipitation_08_August_MCR_weights.csv = mean August total precipitation (mm) MCR weights for individual species
+Species_Precipitation_09_September_MCR_weights.csv = mean September total precipitation (mm) MCR weights for individual species
+Species_Precipitation_10_October_MCR_weights.csv = mean October total precipitation (mm) MCR weights for individual species
+Species_Precipitation_11_November_MCR_weights.csv = mean November total precipitation (mm) MCR weights for individual species
+Species_Precipitation_12_December_MCR_weights.csv = mean December total precipitation (mm) MCR weights for individual species
+Species_Precipitation_Annual_MCR_weights.csv = mean annual total precipitation (mm) MCR weights for individual species
+Species_Temperature_01_January_MCR_weights.csv = mean January temperature (degrees C) MCR weights for individual species
+Species_Temperature_02_February_MCR_weights.csv = mean February temperature (degrees C) MCR weights for individual species
+Species_Temperature_03_March_MCR_weights.csv = mean March temperature (degrees C) MCR weights for individual species
+Species_Temperature_04_April_MCR_weights.csv = mean April temperature (degrees C) MCR weights for individual species
+Species_Temperature_05_May_MCR_weights.csv = mean May temperature (degrees C) MCR weights for individual species
+Species_Temperature_06_June_MCR_weights.csv = mean June temperature (degrees C) MCR weights for individual species
+Species_Temperature_07_July_MCR_weights.csv = mean July temperature (degrees C) MCR weights for individual species
+Species_Temperature_08_August_MCR_weights.csv = mean August temperature (degrees C) MCR weights for individual species
+Species_Temperature_09_September_MCR_weights.csv = mean September temperature (degrees C) MCR weights for individual species
+Species_Temperature_10_October_MCR_weights.csv = mean October temperature (degrees C) MCR weights for individual species
+Species_Temperature_11_November_MCR_weights.csv = mean November temperature (degrees C) MCR weights for individual species
+Species_Temperature_12_December_MCR_weights.csv = mean December temperature (degrees C) MCR weights for individual species
+Species_Temperature_Annual_MCR_weights.csv = mean annual temperature (degrees C) MCR weights for individual species</eaover>
+      <eadetcit>None</eadetcit>
+    </overview>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntperp>
+          <cntper>U.S. Geological Survey - ScienceBase</cntper>
+          <cntorg>U.S. Geological Survey - ScienceBase</cntorg>
+        </cntperp>
+        <cntaddr>
+          <addrtype>Mailing and Physical</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Any use of trade, firm, or product names is for descriptive purposes only and does not imply endorsement by the U.S. Government.
+
+This database has been approved for release and publication by the U.S. Geological Survey (USGS). Although this database has been subjected to rigorous review and is substantially complete, the USGS reserves the right to revise the data pursuant to further analysis and review. Furthermore, it is released on condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from its authorized or unauthorized use.
+
+Although these data have been processed successfully on a computer system at the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty. The USGS or the U.S. Government shall not be held liable for improper or incorrect use of the data described and/or contained herein.
+
+Although this information product, for the most part, is in the public domain, it also may contain copyrighted materials as noted in the text. Permission to reproduce copyrighted items must be secured from the copyright owner.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>https://doi.org/10.5066/P9FPD80E</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20230621</metd>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Richard T. Pelltier</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntpos>Geographer</cntpos>
+        <cntaddr>
+          <addrtype>Mailing</addrtype>
+          <address>Box 25046, MS 980</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>USA</country>
+        </cntaddr>
+        <cntvoice>303-236-5808</cntvoice>
+        <cntemail>rtpelltier@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001-1998</metstdv>
+  </metainfo>
+</metadata>

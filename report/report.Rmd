@@ -1,0 +1,463 @@
+---
+title: "Ecoregion Change Prediction with Neural Networks"
+author: "Lucas Nerbonne"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message=FALSE)
+
+library(terra)
+library(ggplot2)
+library(tidyverse)
+library(caret)
+library(doParallel)
+
+```
+
+# Abstract
+
+My goal for this project is to train a series of neural networks to predict both ecoregion and individual species spatial distribution based on climate and elevation variables. If they can do an adequate job of this, I will test how changing the climate variables, in a completely hypothetical climate warming scenario, changes the predicted distribution of ecoregions and the predicted range of individual species. While not at all predictive of real world potential ecosystem shifts, this is an interesting test to assess the applicability of neural networks in predicting the probable spatial migration initiated by anthropogenic climate alteration. 
+
+## The Dataset
+
+Data used in thsis study is sourced from the USGS dataset `Gridded database of the modern distributions of climate, woody plant taxa, and ecoregions for the continental United States and Canada`, a collection of different climate and ecological variables divided into standardized 20 km grids that cover the extent of the Unites States and Canada. This is available for download from the USGS website in a 27,984 x >1000 dataset seperated into multiple different
+multidimensional NetCDFs. The key pieces of data I'm going to try and predict are the **ecoregion** distributions (you can think about these like types of ecosystem) and a couple different examples of **individual species distributions**. More info about variable names and data sources can be found in the study metadata. 
+
+# Methods
+
+## Neural Networks
+
+Given that they're central to our analysis, what are Neural Networks? NN are operations that pass an initial input through a layer (or layers) of decision points that mathmatically abstract the data to help produce a final output. These layers progressively transform the input, extracting patterns that inform the final prediction. There are two basic types of feedforward neural networks: single-layer and multilayer, named for the number of hidden layers they use to process information. Each layer is composed of nodes (neurons, as in neural network), which receive input from the previous layer and produce an output for the next. Each node transforms its input using a combination of weighted sums and nonlinear activation functions, allowing the network to capture complex relationships in the data. After each run through the layer the network assesses it's output and readjusts the node weights to make a more accurate prediction in the following iteration, allowing it to learn over time.The sheer number of decision points involved in a NN is huge, making them well suited to datasets with a lot of interactions, non-linearity, or have many dimensions. 
+  
+During the actual training process, a single-layer NN takes three primary parameter inputs: the number of nodes per layer, the number of times the data will be run through the layer of nodes, and a weight decay parameter which helps prevent overfitting by decreasing the emphasis of each node over time as the model gets better overall. 
+
+## Data Transformation 
+
+The data will be loaded in using the `terra` package, commonly used for raster manipulation. I'm going to only look at the predictive effects of 9 different variables relating to temperature and precipitation on ecoregion distribution, so I pulled the corresponding rasters before combining them with the ecoregion data. 
+
+The variables I'm using to predict are somewhat thought out; plant species are often limited by their maximum and minimum survival temperatures (alongside confounding variables like wind) and by precipitation. I'm intentionally not feeding the model locations, because I'm going to ask it to predict NEW locations for the different classes later.
+
+```{r load in, echo=FALSE}
+r <- rast("/Users/lucas/Desktop/Stat Learning /NN Ecoregion Prediction/Thompson_and_others_2023_Atlas_data_release_netCDF_files/Bailey_ecoregions_on_25km_grid.nc")
+
+
+climate<- rast("/Users/lucas/Desktop/Stat Learning /NN Ecoregion Prediction/Thompson_and_others_2023_Atlas_data_release_netCDF_files/modern_climate_and_bioclimate_on_25km_grid.nc")
+
+```
+
+```{r transformation}
+ANNT<-climate[[17]]
+ANNT <- as.data.frame(ANNT, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+TMAX<-climate[[18]]
+TMAX <- as.data.frame(TMAX, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+TMIN<-climate[[19]]
+TMIN <- as.data.frame(TMIN, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+MTCO<-climate[[20]]
+MTCO <- as.data.frame(MTCO, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+MTWA<-climate[[21]]
+MTWA <- as.data.frame(MTWA, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+ANNP<-climate[[34]]
+ANNP <- as.data.frame(ANNP, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+GDD5<-climate[[35]]
+GDD5 <- as.data.frame(GDD5, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+AE_PE<-climate[[36]]
+AE_PE <- as.data.frame(AE_PE, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+elevation<- r[[4]]
+elevation <- as.data.frame(elevation, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+all_regions <- r[[57]]
+ecoregions <- as.data.frame(all_regions, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+ecoregions<- left_join(ecoregions, ANNT, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, TMAX, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, TMIN, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, MTCO, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, MTWA, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, ANNP, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, GDD5, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, AE_PE, by= c("cell", "x", "y"))
+ecoregions<- left_join(ecoregions, elevation, by= c("cell", "x", "y"))
+```
+
+To test the technique on a smaller subset of the data I'm going to try and predict just the distribution of the first 12 ecoregions, all of which are arctic tundra/boreal forest related. I'll then map these ecoregions.
+
+```{r subsetting northern species}
+
+northern<- ecoregions|>
+  filter(ALL_BAILEY_ECOREGIONS < 13)
+
+ggplot(northern) +
+  geom_raster(aes(x = x, y = y, fill = `ALL_BAILEY_ECOREGIONS`)) +
+  coord_equal() +
+  scale_fill_viridis_c(name = "Ecoregion ID") +
+  theme_minimal() +
+  labs(title = "Northern Ecoregions")
+
+northern$ALL_BAILEY_ECOREGIONS <- as.factor(make.names(northern$ALL_BAILEY_ECOREGIONS))
+ecoregions$ALL_BAILEY_ECOREGIONS <- as.factor(make.names(ecoregions$ALL_BAILEY_ECOREGIONS))
+```
+
+We can see that all of the selected ecoregions are generally constrained to Alaska/Canada and are a much smaller subset of our data. I'm going to map a few of our selected variables.
+
+```{r }
+ggplot(northern) +
+  geom_raster(aes(x = x, y = y, fill = TMAX)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#FFF5EB", "#FDBE85", "#E6550D", "#990000"),
+    name = "\u00B0C")+
+  theme_minimal() +
+  labs(title = "Maximum Temperature (\u00B0C)", x = "lat",
+       y = "long")
+
+ggplot(northern) +
+  geom_raster(aes(x = x, y = y, fill = TMIN)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#DEEBF7", "#9ECAE1", "#3182BD", "#08519C"),
+    name = "\u00B0C")+
+  theme_minimal() +
+  labs(title = "Minimum Temperature (\u00B0C)", x = "lat",
+       y = "long")
+
+ggplot(northern) +
+  geom_raster(aes(x = x, y = y, fill = ANNP)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#F2F0F7", "#CBC9E2", "#9EBCDA", "#A6DBA0", "#41AB5D"),
+    name = "Precipitation (mm)")+
+  theme_minimal() +
+  labs(title = "Mean Annual Precipitation (mm)", x = "lat",
+       y = "long")
+
+ggplot(northern) +
+  geom_raster(aes(x = x, y = y, fill = elevation)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#006837", "#78C679", "#FEE08B", "#D95F0E", "#A50026", "#FFFFFF"),
+    limits = c(min(northern$elevation), 2000),
+    oob = scales::squish,
+    breaks = c(0, 500, 1000, 1500, 2000),
+    labels = c("0", "500", "1000",  "1500", ">2000"),
+    name = "Elevation (m)"
+  ) +
+  theme_minimal() +
+  labs(title = "Elevation (m)", x = "lat", y = "long")
+```
+
+Now that we have an idea of what we're working with, I will train my first NN on a subset of the data. During this first training I will test a few different node/weight values to see which results in the highest accuracy.
+
+```{r training 1}
+inTrain <- createDataPartition(northern$ALL_BAILEY_ECOREGIONS, p = 3/4)[[1]] #creating a training testing dataset that maintains a proportional partitioning of classes
+training <- northern[inTrain,]
+testing <- northern[-inTrain,]
+
+registerDoParallel(cores = 2) #running this in parallel so it goes faster 
+numFolds <- trainControl(
+  method = 'cv',      #setting it to run multiple times on subsets of the data to get accuracy
+  number = 10,        #setting the number of runs
+  classProbs = TRUE,  #telling it to collect the individual probabilities of classes
+  verboseIter = TRUE #printing progress
+)
+
+tuneGrid = expand.grid(
+  size = c(5, 10, 15, 20),      
+  decay = c(0, 0.1, 0.5, 1e-3)   
+) #testing the optimal node number and weights on a couple different options
+
+fit1 <- train(`ALL_BAILEY_ECOREGIONS` ~ . -ALL_BAILEY_ECOREGIONS -cell -x -y, data = training, method = 'nnet', preProcess = c('center', 'scale'), trControl = numFolds, tuneGrid= tuneGrid) #training the model
+
+results1 <- predict(fit1, newdata=testing)
+conf1 <- confusionMatrix(results1, testing$ALL_BAILEY_ECOREGIONS)
+conf1
+
+plot(fit1) #the best fitting weight/node combo was 20 nodes and a weight decay of 0.001 however, due to variable numbers of groups in different parts of the analysis I am choosing to use a lower number of nodes(15) and a higher weight decay (0.01) for the remainder of the analysis
+```
+
+The NN is super effective, with a kappa of 0.8911 and a balanced accuracy of 0.9485. 
+
+Because the NN acts as a black box, we have no idea what variables are being used the most to make our decisions. To test this I will run a random forest to assess variable importance, one of the benefits of a rf model. 
+
+```{r rf}
+rf <- train(
+  ALL_BAILEY_ECOREGIONS ~ . - cell - x - y,
+  data = training,
+  method = "ranger", importance= "impurity"
+)
+
+varImp(rf)
+```
+
+We see that the most important imputs to the rf model are `GDD5`, `MTWA`, and `TMAX`. `GDD5` is a measure of growing days per year while `MTWA` (mean temperature of the warmest month) and `TMAX` (Temperature max) are heat related, suggesting that a lot of these northern ecoregions are limited by their affinity (or relative resistance) to hot temperatures. 
+
+The rf was slightly more effective than the neural network for THIS subset of the data, with a kappa of 0.9117694 vs a kappa of 0.8911 from the neural network. despite this, I'm suspecting that NN will still perform better with the full ecoregion dataset, given the more varied conditions and larger number of classes. It will also likely train faster (this rf takes FOREVER)
+
+```{r making a prediction}
+predicted_probs <- predict(fit1, newdata = northern, type = "prob") #soft prediction -- allows us to show the degree of uncertainty in areas
+
+predicted_probs$max_label <- colnames(predicted_probs)[max.col(predicted_probs)]
+
+predicted_probs$opacity <- mapply(
+  function(row, colname) predicted_probs[row, colname],
+  row = seq_len(nrow(predicted_probs)),
+  colname = predicted_probs$max_label
+)
+predicted_probs$max_label <- sub("^X", "", predicted_probs$max_label)
+
+
+predicted_probs<- bind_cols(predicted_probs, northern[, 1:3])
+predicted_probs$max_label <- factor(predicted_probs$max_label, 
+                                    levels = sort(as.numeric(unique(predicted_probs$max_label))))
+
+
+#mapping predicted probability, with opacity determined by the confidence of the prediction
+ggplot(predicted_probs) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`, alpha = opacity)) +
+  coord_equal() +
+  scale_fill_viridis_d(name = "Ecoregion ID") +
+  theme_minimal() +
+  scale_alpha(guide = 'none') +
+  labs(title = "Predicted Ecoregion with Uncertainty")
+
+
+ggplot(predicted_probs) +
+  geom_raster(aes(x = x, y = y, fill = `opacity`)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#990000", "#CC3333", "#FF6666", "#FF9999", "#FFD1D1"),
+    name = "Prediction Confidence")+
+  theme_minimal() +
+  labs(title = "Degree of Classification Uncertainty for Northern Ecoregion Predictions", x = "lat",
+       y = "long", caption= "The degree of uncertainty a model experienced when making a decision, measured by the regression percentage the model outputted for any given input. Lower confidence predictions are shown darker")
+```
+
+We see that the predictions are for the most part accurate, with less confidence at the borders between the ecoregions and in Alaska, where coastal precip and temp patterns that are likely not constrained well by our average precip metric and minimal temperature data beyond extremes.
+
+Now that we know this works, I'm going to train a new model to try the approach on all of the ecoregions. 
+
+```{r all ecoregions}
+inTrain2 <- createDataPartition(ecoregions$ALL_BAILEY_ECOREGIONS, p = 3/4)[[1]] #creating a training testing dataset that maintains the even partitioning of classes
+training2 <- ecoregions[inTrain2,]
+testing2 <- ecoregions[-inTrain2,]
+
+fit2 <- train(`ALL_BAILEY_ECOREGIONS` ~ . -ALL_BAILEY_ECOREGIONS -cell -x -y, data = training2, method = 'nnet', preProcess = c('center', 'scale'), trControl = numFolds, tuneGrid=expand.grid(size=c(15), decay=c(0.01)))
+
+results2 <- predict(fit2, newdata=testing2)
+conf2 <- confusionMatrix(results2, testing2$ALL_BAILEY_ECOREGIONS)
+
+
+predicted_probs2 <- predict(fit2, newdata = ecoregions, type = "prob") #soft prediction -- allows us to show the degree of uncertainty in areas
+
+predicted_probs2$max_label <- colnames(predicted_probs2)[max.col(predicted_probs2)]
+
+predicted_probs2$opacity <- mapply(
+  function(row, colname) predicted_probs2[row, colname],
+  row = seq_len(nrow(predicted_probs2)),
+  colname = predicted_probs2$max_label
+)
+predicted_probs2$max_label <- sub("^X", "", predicted_probs2$max_label)
+
+
+predicted_probs2<- bind_cols(predicted_probs2, ecoregions[, 1:3])
+predicted_probs2$max_label <- factor(predicted_probs2$max_label, 
+                                    levels = sort(as.numeric(unique(predicted_probs2$max_label))))
+
+ggplot(predicted_probs2) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`, alpha = opacity)) +
+  coord_equal() +
+  scale_fill_viridis_d(name = "Ecoregion ID") +
+  theme_minimal() +
+  scale_alpha(guide = 'none') +
+  labs(title = "Predicted Ecoregion with Uncertainty")
+
+
+ggplot(predicted_probs2) +
+  geom_raster(aes(x = x, y = y, fill = `opacity`)) +
+  coord_equal() +
+  scale_fill_gradientn(
+    colors = c("#990000", "#CC3333", "#FF6666", "#FF9999", "#FFD1D1"),
+    name = "Prediction Confidence")+
+  theme_minimal() +
+  labs(title = "Degree of Classification Uncertainty for All Ecoregions Prediction", x = "lat",
+       y = "long", caption= "The degree of uncertainty a model experienced when making a decision, measured by the regression percentage the model outputted for any given input. Lower confidence predictions are shown darker")
+```
+
+We see lower, but still alright accuracy levels (kappa = 0.76, accuracy 0.78), and well defined ecoregions mapped by the prediction. The mountain west isn't well constrained and there is marginally more uncertainty around the edges of regions, but for the most part this model is effective. 
+
+Having seen that these variables can provide a reasonable estimate for the distribution of modern-day ecoregions, what about a *future* climate? If we assume that the current ecoregions reflect climate-related factors, then a model trained on these should be able to predict ecoregion range shifts into the future if climate variables are change. I will do this VERY roughly as a proof of concept by changing the value of all the cells irrespective of space by the same amount for different variables, something that I recognize is not reflective of actual climate change. This is purely meant to be a proof of concept that could be applied with a more delicate model. 
+
+```{r changing the climate}
+climate_change<- ecoregions
+climate_change$TMIN<- climate_change$TMIN + 20 #adjusting the climate variables
+climate_change$TMAX<- climate_change$TMAX + 10
+climate_change$ANNT<- climate_change$ANNT + 7
+climate_change$MTCO<- climate_change$MTCO + 10
+climate_change$MTWA<- climate_change$MTWA + 10
+# I notably didn't change temperature, something likely important missing from this analysis
+
+change_preds <- predict(fit2, newdata = climate_change, type = "prob") #soft prediction -- allows us to show the degree of uncertainty in areas
+
+change_preds$max_label <- colnames(change_preds)[max.col(change_preds)]
+
+change_preds$opacity <- mapply(
+  function(row, colname) change_preds[row, colname],
+  row = seq_len(nrow(change_preds)),
+  colname = change_preds$max_label
+)
+change_preds$max_label <- sub("^X", "", change_preds$max_label)
+
+
+change_preds<- bind_cols(change_preds, climate_change[, 1:3])
+change_preds$max_label <- factor(change_preds$max_label, 
+                                     levels = sort(as.numeric(unique(change_preds$max_label))))
+
+ggplot(change_preds) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`, alpha = opacity)) +
+  coord_equal() +
+  scale_fill_viridis_d(name = "Ecoregion ID") +
+  theme_minimal() +
+  scale_alpha(guide = 'none') +
+  labs(title = "Predicted Ecoregion with Uncertainty After CLIMATE CHANGE", caption = "Predicted ecoregion distribution across the United States and Canada under a hypothetical warming scenario.")
+```
+
+While I have no validataion for this, this looks on first glance very successful! Ranges appear to have shifted northwards, with heat-loving plains species increasing their range and colder ecotypes shrinking. 
+
+Let's try this on individual species, to see if this workflow can produce a reasonable presence/absence map for two species: Acer Saccurum and Picea Mariana, Sugar Maple and Black Spruce. 
+
+```{r sugar maple}
+species <- rast("/Users/lucas/Desktop/Stat Learning /NN Ecoregion Prediction/Thompson_and_others_2023_Atlas_data_release_netCDF_files/presence_absence_of_individual_species_on_25km_grid.nc")
+sugar <- species[[32]]
+sugar_pa <- as.data.frame(sugar, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+sugar <- ecoregions |>
+  select(-ALL_BAILEY_ECOREGIONS)
+
+sugar<- left_join(sugar, sugar_pa, by= c("cell","x","y"))
+
+inTrain3 <- createDataPartition(sugar$Acer_saccharum, p = 3/4)[[1]] #creating a training testing dataset that maintains the even partitioning of classes
+training3 <- sugar[inTrain3,]
+testing3 <- sugar[-inTrain3,]
+
+training3$Acer_saccharum <- factor(training3$Acer_saccharum, levels = c(0, 1), labels = c("absent", "present"))
+
+fit3 <- train(`Acer_saccharum` ~ . -Acer_saccharum -cell -x -y, data = training3, method = 'nnet', preProcess = c('center', 'scale'), trControl = numFolds, tuneGrid=expand.grid(size=c(10), decay=c(0.1)))
+
+pred_sugar_maple <- predict(fit3, newdata=sugar, type = "prob")
+
+pred_sugar_maple$max_label <- colnames(pred_sugar_maple)[max.col(pred_sugar_maple)]
+
+pred_sugar_maple$opacity <- mapply(
+  function(row, colname) pred_sugar_maple[row, colname],
+  row = seq_len(nrow(pred_sugar_maple)),
+  colname = pred_sugar_maple$max_label
+)
+
+pred_sugar_maple<- bind_cols(pred_sugar_maple, sugar[, 1:3])
+
+ggplot(sugar) +
+  geom_raster(aes(x = x, y = y, fill = factor(Acer_saccharum))) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("0" = "gray90", "1" = "#228B22"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  ) +
+  theme_minimal() +
+  labs(title = "Present Day Sugar Maple Range", x = "lat", y = "long") #mapping actual range
+
+ggplot(pred_sugar_maple) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`)) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("absent" = "gray90", "present" = "#228B22"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  ) +
+  theme_minimal() +
+  labs(title = "Predicted Present Day Sugar Maple Range From Climate Variables") #mapping predicted range
+```
+
+The sugar maple presence/absence prediction network had a kappa of 0.95 and a accuracy of 0.99, outperforming the ecoregion NNs success at predicting the distribution of data. Now to predict the climate-adjusted range:
+
+```{r maple climate change}
+maple_change<- predict(fit3, climate_change, type= "prob")
+maple_change$max_label <- colnames(maple_change)[max.col(maple_change)]
+
+maple_change$opacity <- mapply(
+  function(row, colname) maple_change[row, colname],
+  row = seq_len(nrow(maple_change)),
+  colname = maple_change$max_label
+)
+
+maple_change<- bind_cols(maple_change, sugar[, 1:3])
+
+
+
+ggplot(maple_change) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`)) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("absent" = "gray90", "present" = "forestgreen"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  )  +
+  theme_minimal() +
+  labs(title = "Predicted Sugar Maple Range in Climate Change Scenario")
+#super strange results- you can tell that this doesn't nessecarily have all the variables it needs, like soil type. 
+```
+
+This seems to have worked somwhat well, with maple range predicted to extend deep into the canadian north and only be found in upper elevations in the US, a logical migration pattern as a response to heat. There are some outliers, with maples supposedly being suitable for coastal Alaska. This potentially reflects that this model doesn't have all the variables it needs- lots of other variables constrain plant growth; one of these is soil type and suitability, which is hypothesized to constrain the northern range of sugar maples because they can't grow in acidic soils. I'm going to run one more species to test this approach again- black spruce- which theoretically will have a similar northwards range shift.
+
+```{r black spruce}
+spruce <- species[[412]]
+spruce_pa <- as.data.frame(spruce, xy = TRUE, cells = TRUE, na.rm = TRUE)
+
+
+spruce <- ecoregions |>
+  select(-ALL_BAILEY_ECOREGIONS)
+
+spruce<- left_join(spruce, spruce_pa, by= c("cell","x","y"))
+
+ggplot(spruce) +
+  geom_raster(aes(x = x, y = y, fill = factor(Picea_mariana))) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("0" = "gray90", "1" = "#228B22"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  ) +
+  theme_minimal() +
+  labs(title = "Present Day Range of Picea mariana", x = "lat", y = "long")
+
+inTrain4 <- createDataPartition(spruce$Picea_mariana, p = 3/4)[[1]] #creating a training testing dataset that maintains the even partitioning of classes
+training4 <- spruce[inTrain4,]
+testing4 <- spruce[-inTrain4,]
+
+training4$Picea_mariana <- factor(training4$Picea_mariana, levels = c(0, 1), labels = c("absent", "present"))
+
+fit4 <- train(`Picea_mariana` ~ . -Picea_mariana -cell -x -y, data = training4, method = 'nnet', preProcess = c('center', 'scale'), trControl = numFolds, tuneGrid=expand.grid(size=c(10), decay=c(0.1)))
+
+pred_spruce <- predict(fit4, newdata=spruce, type = "prob")
+
+pred_spruce$max_label <- colnames(pred_spruce)[max.col(pred_spruce)]
+
+pred_spruce$opacity <- mapply(
+  function(row, colname) pred_spruce[row, colname],
+  row = seq_len(nrow(pred_spruce)),
+  colname = pred_spruce$max_label
+)
+
+pred_spruce<- bind_cols(pred_spruce, sugar[, 1:3])
+
+ggplot(pred_spruce) +
+  geom_raster(a
