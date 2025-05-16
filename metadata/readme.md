@@ -19,4 +19,9 @@ in data/public/modern_climate_and_bioclimate_on_25km_grid.nc 9 different variabl
 
 data/private/presence_absence_of_individual_species_on_25km_grid.nc two variables were used
 
-Acer_saccharum = presence/absens
+Acer_saccharum = presence/absense of Sugar Maple
+Picea_mariana = presence/absence of Black Spruce
+
+data/public/Bailey_ecoregions_on_25km_grid.nc. 
+
+    ALL_BAILEY_ECOREGIONS = all 57 bailey ecoregions as factors
