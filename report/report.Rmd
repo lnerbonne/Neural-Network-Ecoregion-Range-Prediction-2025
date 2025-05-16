@@ -460,4 +460,48 @@ pred_spruce$opacity <- mapply(
 pred_spruce<- bind_cols(pred_spruce, sugar[, 1:3])
 
 ggplot(pred_spruce) +
-  geom_raster(a
+  geom_raster(aes(x = x, y = y, fill = `max_label`)) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("absent" = "gray90", "present" = "#228B22"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  )  +
+  theme_minimal() +
+  labs(title = "Predicted Present Day Black Spruce Range from Climate Variables Alone")
+
+
+spruce_change<- predict(fit4, climate_change, type= "prob")
+spruce_change$max_label <- colnames(spruce_change)[max.col(spruce_change)]
+
+spruce_change$opacity <- mapply(
+  function(row, colname) spruce_change[row, colname],
+  row = seq_len(nrow(spruce_change)),
+  colname = spruce_change$max_label
+)
+
+spruce_change<- bind_cols(spruce_change, spruce[, 1:3])
+
+ggplot(spruce_change) +
+  geom_raster(aes(x = x, y = y, fill = `max_label`)) +
+  coord_equal() +
+  scale_fill_manual(
+    values = c("absent" = "gray90", "present" = "#228B22"),
+    name = "Presence",
+    labels = c("Absent", "Present")
+  )  +
+  theme_minimal() +
+  labs(title = "Predicted Black Spruce Range in Climate Change Scenario")
+
+```
+
+This doesn't work as well- we see both a northwards and a southwards expansion of the Black Spruce distribution in a pattern that doesn't match what we would expect to see. 
+
+
+# Discussion
+
+Overall, I think this proof of concept worked well. I showed that it was possible to predict, with reasonable accuracy, the modern-day spatial distribution of both ecoregions and individual species distribution from climate and elevation data alone. Using these predictions and modeled climate data I was able to construct reasonable future ecoregion distributions and somewhat reasonable future species distributions. This method would be enhanced by the inclusion of more fine-grained future climate data to provide real estimates to provide REAL estimates instead of my cooked up fake numbers. 
+
+Neural Networks were a useful tool in conducting this analysis, as they were able to handle the complex relationships between climate variables to effectively predict current ranges and make plausible predictions of future range distributions.
+
+
